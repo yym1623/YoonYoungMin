@@ -31,16 +31,16 @@ function scroll() {
       <div class="Skile__Name">Skile.</div>
       <div class="Skile__Item">
         <div class="__Items">
-          <div class="__Item">Vue</div>
+          <div class="__Item">Vue3</div>
           <div class="__Item">Nuxt.js</div>
           <div class="__Item">Pinia</div>
           <div class="__Item">Javascript</div>
           <div class="__Item">Typescript</div>
           <div class="__Item">SCSS</div>
           <div class="__Item">VITE</div>
-          <div class="__Item">준비중</div>
-          <div class="__Item">준비중</div>
-          <div class="__Item">준비중</div>
+          <div class="__Item">Node.js</div>
+          <div class="__Item">Express</div>
+          <div class="__Item">Storebook</div>
         </div>
       </div>
       <div class="Skiles">

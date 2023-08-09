@@ -11,7 +11,7 @@
         <div class="n__line sc"></div>
         <div class="__MyCarrer">
           <div class="__title"><span>Eletree</span>(2021.10 ~ 2023.01)</div>
-          <div class="__about">FE 개발 (사원)</div>
+          <div class="__about">SW 개발 (사원)</div>
         </div>
       </div>
       </div>

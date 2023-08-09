@@ -5,7 +5,7 @@
 <template>
   <div class="__Container">
     <div class="Project__Container">
-      <div class="Project__Name">Project.</div>
+      <div class="Project__Name">Projects.</div>
       <div class="__ContentBox">
         <!-- 1 -->
         <div class="Project__Content">
