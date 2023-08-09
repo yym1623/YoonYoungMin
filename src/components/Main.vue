@@ -4,6 +4,7 @@ import { ref, onMounted, onUpdated, onBeforeUnmount } from 'vue'
 const isFixed = ref(false);
 const leftFixed = ref(false);
 const rightFixed = ref(false);
+
 // 변수명과 템플릿명이 같으면 ref로 참조가 가능하다
 const header = ref();
 
@@ -12,14 +13,12 @@ onBeforeUnmount(() => {
   document.removeEventListener("scroll", scroll);
 })
 
-
 onMounted(() => {
   leftFixed.value = true;
   rightFixed.value = true;
 
   document.addEventListener("scroll", scroll);
 })
-
 
 function scroll() {
   if (window.scrollY > header.value.offsetTop) {

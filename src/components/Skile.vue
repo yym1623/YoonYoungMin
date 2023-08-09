@@ -1,9 +1,32 @@
 <script setup>
+import { ref, onBeforeUnmount, onMounted } from 'vue'
+
+const isFixed = ref(false);
+
+const skile_header = ref();
+
+onBeforeUnmount(() => {
+  document.removeEventListener("scroll", scroll);
+})
+
+onMounted(() => {
+  document.addEventListener("scroll", scroll);
+})
+
+function scroll() {
+  // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
+  if (window.scrollY > skile_header.value.offsetTop) {
+    isFixed.value = true;
+
+  } else {
+    isFixed.value = false;
+  }
+}
 
 </script>
 
 <template>
-  <div class="__Container">
+  <div class="__Container"  ref="skile_header">
     <div class="Skile__Container">
       <div class="Skile__Name">Skile.</div>
       <div class="Skile__Item">
@@ -21,20 +44,20 @@
         </div>
       </div>
       <div class="Skiles">
-        <div class="__Skiles">
+        <div class="__Skiles" :class="{ isFixed: isFixed }">
           <div class="__Name">Vue</div>
           <div class="__Contents">
             <div class="__Content">Vue2 option api와 Vue3 composition api를 사용할 수 있습니다.</div>
             <div class="__Content">Vuex & Pinia등의 상태관리 라이브러리를 사용할 수 있습니다.</div>
           </div>
         </div>
-        <div class="__Skiles">
+        <div class="__Skiles" :class="{ isFixed: isFixed }">
           <div class="__Name">React</div>
           <div class="__Contents">
             <div class="__Content">현재 공부중 입니다.</div>
           </div>
         </div>
-        <div class="__Skiles">
+        <div class="__Skiles" :class="{ isFixed: isFixed }">
           <div class="__Name">HTML/CSS</div>
           <div class="__Contents">
             <div class="__Content">웹표준을 지키려 노력합니다.</div>
@@ -44,7 +67,7 @@
             <div class="__Content">keyframe을 활용한 애니메이션 기법을 활용할 수 있습니다.</div>
           </div>
         </div>
-        <div class="__Skiles">
+        <div class="__Skiles" :class="{ isFixed: isFixed }">
           <div class="__Name">Javascript</div>
           <div class="__Contents">
             <div class="__Content">ES6+ 문법에 익숙합니다.</div>
@@ -101,7 +124,49 @@
       }
     }
     .Skiles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 3rem -2rem 0px;
       
+      .__Skiles {
+        position: relative;
+        border: 0.2rem solid rgb(0, 173, 181);
+        border-radius: 2rem;
+        margin: 2rem;
+        padding: 2rem;
+      
+        transform: perspective(2500px) rotateY(-100deg);
+        backface-visibility: hidden;
+        transition-property: transform;
+        transition-duration: .4s;
+        .__Name {
+          position: absolute;
+          left: -1.5rem;
+          top: -1.5rem;
+          transform: rotate(-10deg);
+          border: 0.2rem solid rgb(238, 238, 238);
+          color: rgb(0, 173, 181);
+          background-color: rgb(34, 40, 49);
+          padding: 0.5rem 1rem;
+          font-size: 2rem;
+          font-weight: 800;
+
+          transform: perspective(2500px) rotateY(-100deg);
+        }
+        .__Contents {
+          margin-top: 1.5rem;
+          color: rgb(238, 238, 238);
+          .__Content {
+            line-height: 2rem;
+          }
+        }
+      }
+      .__Skiles.isFixed {
+          transform: perspective(2500px) rotateY(0);
+        .__Name {
+          transform: perspective(2500px) rotateY(0);
+        }
+      }
     }
   }
 }
