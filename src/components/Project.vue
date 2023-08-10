@@ -1,16 +1,42 @@
 <script setup>
+import { ref, onBeforeUnmount, onMounted } from 'vue'
 
+const isFixed = ref(false);
+
+const project_header = ref();
+
+onBeforeUnmount(() => {
+  document.removeEventListener("scroll", scroll);
+})
+
+onMounted(() => {
+  document.addEventListener("scroll", scroll);
+})
+
+function scroll() {
+  if (window.scrollY > project_header.value.offsetTop) {
+    isFixed.value = true;
+    console.log(isFixed.value)
+  } else {
+    isFixed.value = false;
+  }
+}
+
+// location
+function location(href) {
+  window.open(href, "_blank");
+}
 </script>
 
 <template>
-  <div class="__Container">
+  <div class="__Container" ref="project_header">
     <div class="Project__Container">
       <div class="Project__Name">Projects.</div>
       <div class="__ContentBox">
         <!-- 1 -->
         <div class="Project__Content">
-          <div class="a-animate">
-            <div class="__Container">
+          <div class="a-animate" :class="{ isFixed : isFixed }">
+            <div class="__Containers">
               <div class="__title">API 영화 검색</div>
               <div class="__date">2022.10 ~ 2022.11 (1명)</div>
               <div class="__skiles">
@@ -26,8 +52,12 @@
                 <div class="__content">DB 대신 로컬 스토리지 활용하여 데이터 저장</div>
               </div>
               <div class="__icons">
-                <div class="__git"></div>
-                <div class="__demo"></div>
+                <div class="__icon __demo" @click="location('https://spmv.netlify.app/#/')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm10 12c0 .685-.07 1.354-.202 2h-3.853a21.373 21.373 0 000-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278A10.048 10.048 0 0121.159 8zm-5.554 0H13V2.342c1.215 1.46 2.117 3.41 2.605 5.658zM11 2.342V8H8.395C8.883 5.752 9.785 3.802 11 2.342zM11 10v4H8.07a18.32 18.32 0 010-4H11zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658H11zm2 5.658V16h2.605c-.488 2.248-1.39 4.198-2.605 5.658zM13 14v-4h2.93a18.32 18.32 0 010 4H13zM8.289 2.722C7.393 4.249 6.724 6.04 6.341 8h-3.5a10.048 10.048 0 015.448-5.278zM2.202 10h3.853a21.373 21.373 0 000 4H2.202a9.983 9.983 0 010-4zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278A10.048 10.048 0 012.841 16zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5a10.048 10.048 0 01-5.448 5.278z"></path></svg>
+                </div>
+                <div class="__icon __git"  @click="location('https://github.com/yym1623/SPMV')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+                </div>
               </div>
             </div>
           </div>
@@ -35,8 +65,8 @@
         
         <!-- 2 -->
         <div class="Project__Content">
-          <div class="a-animate">
-            <div class="__Container">
+          <div class="a-animate" :class="{ isFixed : isFixed }">
+            <div class="__Containers">
               <div class="__title">편의점 조합 서비스</div>
               <div class="__date">2022.05 ~ 2022.08 (2명)</div>
               <div class="__skiles">
@@ -54,8 +84,12 @@
                 <div class="__content">Vite를 이용한 빌드</div>
               </div>
               <div class="__icons">
-                <div class="__git"></div>
-                <div class="__demo"></div>
+                <div class="__icon __demo" @click="location('http://54.180.193.83:8080/')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm10 12c0 .685-.07 1.354-.202 2h-3.853a21.373 21.373 0 000-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278A10.048 10.048 0 0121.159 8zm-5.554 0H13V2.342c1.215 1.46 2.117 3.41 2.605 5.658zM11 2.342V8H8.395C8.883 5.752 9.785 3.802 11 2.342zM11 10v4H8.07a18.32 18.32 0 010-4H11zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658H11zm2 5.658V16h2.605c-.488 2.248-1.39 4.198-2.605 5.658zM13 14v-4h2.93a18.32 18.32 0 010 4H13zM8.289 2.722C7.393 4.249 6.724 6.04 6.341 8h-3.5a10.048 10.048 0 015.448-5.278zM2.202 10h3.853a21.373 21.373 0 000 4H2.202a9.983 9.983 0 010-4zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278A10.048 10.048 0 012.841 16zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5a10.048 10.048 0 01-5.448 5.278z"></path></svg>
+                </div>
+                <div class="__icon __git" @click="location('https://github.com/yym1623/Convenience')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+                </div>
               </div>
             </div>
           </div>
@@ -63,8 +97,8 @@
   
         <!-- 3 -->
         <div class="Project__Content">
-          <div class="a-animate">
-            <div class="__Container">
+          <div class="a-animate" :class="{ isFixed : isFixed }">
+            <div class="__Containers">
               <div class="__title">instagram 클론 개발</div>
               <div class="__date">2022.12 ~ 2023.01 (1명)</div>
               <div class="__skiles">
@@ -84,8 +118,12 @@
                 <div class="__content">express -> db 연동하여 데이터 관리</div>
               </div>
               <div class="__icons">
-                <div class="__git"></div>
-                <div class="__demo"></div>
+                <div class="__icon __demo" @click="location('https://y-instagram.netlify.app/#/login')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm10 12c0 .685-.07 1.354-.202 2h-3.853a21.373 21.373 0 000-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278A10.048 10.048 0 0121.159 8zm-5.554 0H13V2.342c1.215 1.46 2.117 3.41 2.605 5.658zM11 2.342V8H8.395C8.883 5.752 9.785 3.802 11 2.342zM11 10v4H8.07a18.32 18.32 0 010-4H11zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658H11zm2 5.658V16h2.605c-.488 2.248-1.39 4.198-2.605 5.658zM13 14v-4h2.93a18.32 18.32 0 010 4H13zM8.289 2.722C7.393 4.249 6.724 6.04 6.341 8h-3.5a10.048 10.048 0 015.448-5.278zM2.202 10h3.853a21.373 21.373 0 000 4H2.202a9.983 9.983 0 010-4zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278A10.048 10.048 0 012.841 16zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5a10.048 10.048 0 01-5.448 5.278z"></path></svg>
+                </div>
+                <div class="__icon __git" @click="location('https://github.com/yym1623/instagram')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+                </div>
               </div>
             </div>
           </div>
@@ -93,8 +131,8 @@
   
         <!-- 4 -->
         <div class="Project__Content">
-          <div class="a-animate">
-            <div class="__Container">
+          <div class="a-animate" :class="{ isFixed : isFixed }">
+            <div class="__Containers">
               <div class="__title">추가 예정</div>
               <div class="__date">2023.00 ~ 2023.00 (1명)</div>
               <div class="__skiles">
@@ -110,8 +148,12 @@
                 <div class="__content">미정</div>
               </div>
               <div class="__icons">
-                <div class="__git"></div>
-                <div class="__demo"></div>
+                <div class="__icon __demo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm10 12c0 .685-.07 1.354-.202 2h-3.853a21.373 21.373 0 000-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278A10.048 10.048 0 0121.159 8zm-5.554 0H13V2.342c1.215 1.46 2.117 3.41 2.605 5.658zM11 2.342V8H8.395C8.883 5.752 9.785 3.802 11 2.342zM11 10v4H8.07a18.32 18.32 0 010-4H11zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658H11zm2 5.658V16h2.605c-.488 2.248-1.39 4.198-2.605 5.658zM13 14v-4h2.93a18.32 18.32 0 010 4H13zM8.289 2.722C7.393 4.249 6.724 6.04 6.341 8h-3.5a10.048 10.048 0 015.448-5.278zM2.202 10h3.853a21.373 21.373 0 000 4H2.202a9.983 9.983 0 010-4zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278A10.048 10.048 0 012.841 16zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5a10.048 10.048 0 01-5.448 5.278z"></path></svg>
+                </div>
+                <div class="__icon __git">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="svg"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+                </div>
               </div>
             </div>
           </div>
@@ -160,12 +202,7 @@
         width: 100%;
         color: white;
         .a-animate {
-          transition-timing-function: ease;
-          transition-duration: .4s;
-          backface-visibility: hidden;
-          transition-property: transform;
-          /* transform: perspective(2500px) rotateY(0); */
-          .__Container {
+          .__Containers {
             padding: 2rem;
             position: relative;
             border-radius: 2rem;
@@ -173,10 +210,14 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            transition-timing-function: ease;
+            transition-duration: .4s;
+            backface-visibility: hidden;
+            transition-property: transform;
             .__title {
               color: rgb(0, 0, 0);
               left: -3rem;
-              transform: rotate(-10deg);
+              transform: rotate(-10deg) !important;
               font-weight: 800;
               position: absolute;
               border-radius: 2rem;
@@ -210,15 +251,24 @@
                 line-height: 1.5rem;
               }
             }
+            .__icons {
+              display: flex;
+              position: absolute;
+              bottom: -1rem;
+              right: 2rem;
+              cursor: pointer;
+            }
           }
         }
         &:nth-child(1),
         &:nth-child(3) {
           .a-animate {
-            .__Container {
+            .__Containers {
               margin-right: 30rem;
               border: 0.1rem solid rgb(0, 255, 148);
+              transform: perspective(2500px) rotateY(-100deg);
               .__title {
+                transform: perspective(2500px) rotateY(-100deg);
                 background-color: rgb(0, 255, 148);
                 border: 0.1rem solid rgb(0, 255, 148);
               }
@@ -226,23 +276,37 @@
                 color: rgb(0, 255, 148);
               }
               .__icons {
-                display: flex;
-                position: absolute;
-                bottom: -1rem;
-                right: 2rem;
-                fill: rgb(0, 255, 148);
-                cursor: pointer;
+                .__demo {
+                  margin-right: 10px;
+                }
+                .__icon {
+                  svg {
+                    fill: rgb(0, 255, 148);
+                  }
+                }
               }
+            }
+          }
+          .a-animate.isFixed {
+            .__Containers {
+              transition-duration: .4s;
+              transform: perspective(2500px) rotateY(0);
+            }
+            .__title {
+              transition-duration: .4s;
+              transform: perspective(2500px) rotateY(0);
             }
           }
         }
         &:nth-child(2),
         &:nth-child(4) {
           .a-animate {
-            .__Container {
+            .__Containers {
               margin-left: 30rem;
               border: 0.1rem solid rgb(0, 26, 255);
+              transform: perspective(2500px) rotateY(100deg);
               .__title {
+                transform: perspective(2500px) rotateY(100deg);
                 background-color: rgb(0, 26, 255);
                 border: 0.1rem solid rgb(0, 26, 255);
               }
@@ -250,13 +314,25 @@
                 color: rgb(0, 26, 255);
               }
               .__icons {
-                display: flex;
-                position: absolute;
-                bottom: -1rem;
-                right: 2rem;
-                fill: rgb(0, 26, 255);
-                cursor: pointer;
+                .__demo {
+                  margin-right: 10px;
+                }
+                .__icon {
+                  svg {
+                    fill: rgb(0, 26, 255);
+                  }
+                }
               }
+            }
+          }
+          .a-animate.isFixed {
+            .__Containers {
+              transition-duration: .4s;
+              transform: perspective(2500px) rotateY(0);
+            }
+            .__title {
+              transition-duration: .4s;
+              transform: perspective(2500px) rotateY(0);
             }
           }
         }

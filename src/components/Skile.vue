@@ -17,7 +17,6 @@ function scroll() {
   // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
   if (window.scrollY > skile_header.value.offsetTop) {
     isFixed.value = true;
-
   } else {
     isFixed.value = false;
   }
@@ -143,14 +142,15 @@ function scroll() {
           position: absolute;
           left: -1.5rem;
           top: -1.5rem;
-          transform: rotate(-10deg);
           border: 0.2rem solid rgb(238, 238, 238);
+          transform: rotate(-10deg) !important;
           color: rgb(0, 173, 181);
           background-color: rgb(34, 40, 49);
           padding: 0.5rem 1rem;
           font-size: 2rem;
           font-weight: 800;
-
+          
+          transition-duration: .4s;
           transform: perspective(2500px) rotateY(-100deg);
         }
         .__Contents {

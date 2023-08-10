@@ -3,6 +3,17 @@ import { ref } from 'vue';
 
 const myimg = ref(false);
 
+// location
+function location(href) {
+  window.open(href, "_blank");
+}
+
+function alerts() {
+  alert('준비중입니다!')
+}
+
+
+
 </script>
 
 <template>
@@ -31,10 +42,10 @@ const myimg = ref(false);
         </div>
         <div class="TextBox">
           <div class="__TextBox">
-            <div class="Texts __gmail">rhenfla@gmail.com</div>
-            <div class="Texts __git">GITHUB</div>
-            <div class="Texts __blug">BLUG</div>
-            <div class="Texts __?">?</div>
+            <div class="Texts __gmail">yym16233@gmail.com</div>
+            <div class="Texts __git" @click="location('https://github.com/yym1623')">GITHUB</div>
+            <div class="Texts __blug" @click="alerts()">BLUG</div>
+            <div class="Texts __RESUME">RESUM</div>
           </div>
         </div>
       </div>
@@ -43,7 +54,7 @@ const myimg = ref(false);
           <div class="__Texts"><span>FrontEnd</span>를 깊이 있게 다지고 싶은 <span>주니어 개발자</span>입니다!</div>
           <div class="__Texts">로드맵을 보면서 Front, Back 가리지 않고 재밌게 배워가고 있습니다</div>
           <div class="__Texts"><span>"몰아치는 파도를 피하지 말고 올라타라"</span> 최근 계속 떠올리는 말입니다!</div>
-          <div class="__Texts">진행하다 막히고 그것을 해결할때의 뿌듯함은 저한테는 계속 <span>추진력</span>이 되어주고 있습니다</div>
+          <div class="__Texts">진행하다 막히고 그것을 해결할 때의 뿌듯함은 저한테는 계속 <span>추진력</span>이 되어주고 있습니다</div>
           <div class="__Texts">항상 새로운 프로젝트를 만들면서 저 자신을 <span>성장시키는 기회</span>를 얻고 있습니다</div>
         </div>
       </div>
