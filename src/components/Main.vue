@@ -3,7 +3,7 @@ import { ref, onMounted, onUpdated, onBeforeUnmount } from 'vue'
 
 const isFixed = ref(false);
 const leftFixed = ref(false);
-const rightFixed = ref(false);
+// const rightFixed = ref(false);
 
 // 변수명과 템플릿명이 같으면 ref로 참조가 가능하다
 const header = ref();
@@ -15,7 +15,7 @@ onBeforeUnmount(() => {
 
 onMounted(() => {
   leftFixed.value = true;
-  rightFixed.value = true;
+  // rightFixed.value = true;
 
   document.addEventListener("scroll", scroll);
 })
@@ -36,7 +36,7 @@ function scroll() {
     <div class="Main__Container">
       <div class="Name"  ref="header" :class="{ isFixed : isFixed }">
         <div class="Text" :class="{ leftFixed : leftFixed }">YOON YOUNG MIN</div>
-        <div class="Nickname" :class="{ rightFixed : rightFixed }">KANG MIN</div>
+        <!-- <div class="Nickname" :class="{ rightFixed : rightFixed }">KANG MIN</div> -->
       </div>
     </div>
   </div>
