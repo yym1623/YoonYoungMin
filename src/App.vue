@@ -1,11 +1,11 @@
 <script setup>
+// script setup 기준으로 내장 함수로 콜백형식으로 불러오면 -> 반응형?, import로만 불러오면 정적? -> 차이 분석하자
 // components
 import Main from './components/Main.vue'
 import Profile from './components/Profile.vue'
 import Skile from './components/Skile.vue'
 import Project from './components/Project.vue'
 import Career from './components/Career.vue'
-
 import Stars from './components/Stars.vue'
 </script>
 
@@ -18,10 +18,10 @@ import Stars from './components/Stars.vue'
       <Main />
       <Profile />
       <Skile />
-      <!-- <Career /> -->
       <Career />
       <Project />
-      
+
+      <div class="up__btn"><span class="material-symbols-outlined">arrow_upward</span></div>
       <Footer class="Footer">
         <div class="__reference">Designed Reference <span>LeeJeongMin</span></div>
         <div class="__developer">Developed By <span>YoonYoungMin</span></div>
@@ -48,6 +48,37 @@ import Stars from './components/Stars.vue'
     top: 0;
     width: 100%;
     height: 100%;
+    .up__btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background: #fff;
+      border-radius: 50%;
+      span {
+        animation: arrows 1s infinite;
+        @keyframes arrows {
+          0% {
+            margin-bottom: 0;
+            opacity: .5;
+          }
+          50% {
+            margin-bottom: 5px;
+            opacity: .8;
+            
+          }
+          100% {
+            margin-bottom: 0;
+            opacity: .5;
+          }
+        }
+      }
+    }
     .Footer {
       font-family: Montserrat, sans-serif;
       background-color: rgb(0, 0, 0);
