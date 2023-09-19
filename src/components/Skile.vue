@@ -170,4 +170,17 @@ function scroll() {
     }
   }
 }
+@media screen and (max-width: 1024px) {
+  .__Container {
+    .Skile__Container {
+      .Skiles {
+        display: block;
+      }
+      .Skile__Item {
+        display: none;
+      }
+    } 
+      
+  }
+}
 </style>

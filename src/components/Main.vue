@@ -71,23 +71,6 @@ function scroll() {
           }
         }
       }
-      .Nickname {
-        margin-top: 20px;
-        text-align: end;
-      }
-      .Nickname.rightFixed {
-        animation: fadeInRight 1s;
-        @keyframes fadeInRight {
-          0% {
-            opacity: 0;
-            transform: translate3d(100%, 0, 0);
-          }
-          to {
-            opacity: 1;
-            transform: translateZ(0);
-          }
-        }
-      }
     }
     .Name.isFixed {
       transition: .8s;
@@ -105,6 +88,15 @@ function scroll() {
         }
       } */
 
+    }
+  }
+}
+@media screen and (max-width:1024px) {
+  .__Container {
+    width: 100%;
+    height: 100%;
+    .Main__Container {
+      font-size: 5rem;
     }
   }
 }

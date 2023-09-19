@@ -79,4 +79,9 @@
     }
   }
 }
+@media screen and (max-width:1024px) {
+  .__Container {
+    padding-top: 5rem;
+  }
+}
 </style>

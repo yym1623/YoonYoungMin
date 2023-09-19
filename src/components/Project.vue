@@ -340,4 +340,23 @@ function location(href) {
     }
   }
 }
+@media screen and (max-width:1024px) {
+  .__Container {
+    .Project__Container {
+      .__ContentBox {
+        .Project__Content
+        &:nth-child(1),
+        &:nth-child(3),
+        &:nth-child(2),
+        &:nth-child(4) {
+          .a-animate {
+            .__Containers {
+              margin: auto !important;
+            }
+          }
+        } 
+      }
+    }
+  }
+}
 </style>
