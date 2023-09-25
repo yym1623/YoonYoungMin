@@ -8,11 +8,6 @@ function location(href) {
   window.open(href, "_blank");
 }
 
-function alerts() {
-  alert('준비중입니다!')
-}
-
-
 
 </script>
 

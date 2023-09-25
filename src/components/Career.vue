@@ -81,7 +81,7 @@
 }
 @media screen and (max-width:1024px) {
   .__Container {
-    padding-top: 5rem;
+    padding-top: 15rem;
   }
 }
 </style>

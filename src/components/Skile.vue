@@ -15,7 +15,7 @@ onMounted(() => {
 
 function scroll() {
   // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
-  if (window.scrollY > skile_header.value.offsetTop) {
+  if (window.scrollY > skile_header.value.offsetTop + -300) {
     isFixed.value = true;
   } else {
     isFixed.value = false;
@@ -43,20 +43,20 @@ function scroll() {
         </div>
       </div>
       <div class="Skiles">
-        <div class="__Skiles" :class="{ isFixed: isFixed }">
+        <div class="__Skiles" :class="{isFixed}">
           <div class="__Name">Vue</div>
           <div class="__Contents">
             <div class="__Content">Vue2 option api와 Vue3 composition api를 사용할 수 있습니다.</div>
             <div class="__Content">Vuex & Pinia등의 상태관리 라이브러리를 사용할 수 있습니다.</div>
           </div>
         </div>
-        <div class="__Skiles" :class="{ isFixed: isFixed }">
+        <div class="__Skiles" :class="{isFixed}">
           <div class="__Name">React</div>
           <div class="__Contents">
             <div class="__Content">현재 공부중 입니다.</div>
           </div>
         </div>
-        <div class="__Skiles" :class="{ isFixed: isFixed }">
+        <div class="__Skiles" :class="{isFixed}">
           <div class="__Name">HTML/CSS</div>
           <div class="__Contents">
             <div class="__Content">웹표준을 지키려 노력합니다.</div>
@@ -66,7 +66,7 @@ function scroll() {
             <div class="__Content">keyframe을 활용한 애니메이션 기법을 활용할 수 있습니다.</div>
           </div>
         </div>
-        <div class="__Skiles" :class="{ isFixed: isFixed }">
+        <div class="__Skiles" :class="{isFixed}">
           <div class="__Name">Javascript</div>
           <div class="__Contents">
             <div class="__Content">ES6+ 문법에 익숙합니다.</div>

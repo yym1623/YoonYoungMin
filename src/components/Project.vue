@@ -3,18 +3,14 @@ import { ref, onBeforeUnmount, onMounted } from 'vue'
 
 const isFixed = ref(false);
 
-const project_header = ref();
-
-onBeforeUnmount(() => {
-  document.removeEventListener("scroll", scroll);
-})
+const projectActive = ref();
 
 onMounted(() => {
   document.addEventListener("scroll", scroll);
 })
 
 function scroll() {
-  if (window.scrollY > project_header.value.offsetTop) {
+  if (window.scrollY > projectActive.value.offsetTop + -300) {
     isFixed.value = true;
     console.log(isFixed.value)
   } else {
@@ -29,13 +25,13 @@ function location(href) {
 </script>
 
 <template>
-  <div class="__Container" ref="project_header">
+  <div class="__Container" ref="projectActive">
     <div class="Project__Container">
       <div class="Project__Name">Projects.</div>
       <div class="__ContentBox">
         <!-- 1 -->
         <div class="Project__Content">
-          <div class="a-animate" :class="{ isFixed : isFixed }">
+          <div class="a-animate" :class="{isFixed}">
             <div class="__Containers">
               <div class="__title">API 영화 검색</div>
               <div class="__date">2022.10 ~ 2022.11 (1명)</div>
@@ -65,7 +61,7 @@ function location(href) {
         
         <!-- 2 -->
         <div class="Project__Content">
-          <div class="a-animate" :class="{ isFixed : isFixed }">
+          <div class="a-animate" :class="{isFixed}">
             <div class="__Containers">
               <div class="__title">편의점 조합 서비스</div>
               <div class="__date">2022.05 ~ 2022.08 (2명)</div>
@@ -97,7 +93,7 @@ function location(href) {
   
         <!-- 3 -->
         <div class="Project__Content">
-          <div class="a-animate" :class="{ isFixed : isFixed }">
+          <div class="a-animate" :class="{isFixed}">
             <div class="__Containers">
               <div class="__title">instagram 클론 개발</div>
               <div class="__date">2022.12 ~ 2023.01 (1명)</div>
@@ -131,7 +127,7 @@ function location(href) {
   
         <!-- 4 -->
         <div class="Project__Content">
-          <div class="a-animate" :class="{ isFixed : isFixed }">
+          <div class="a-animate" :class="{isFixed}">
             <div class="__Containers">
               <div class="__title">추가 예정</div>
               <div class="__date">2023.00 ~ 2023.00 (1명)</div>
