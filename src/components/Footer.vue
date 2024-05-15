@@ -18,7 +18,7 @@
   font-size: 1.2rem;
   position: absolute;
   bottom: 2rem;
-  right: 2rem;
+  /* right: 2rem; */
   color: rgb(57, 62, 70);
   font-weight: 800;
 }

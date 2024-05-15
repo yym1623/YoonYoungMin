@@ -102,7 +102,7 @@ function location(href) {
                 <div class="__skile">Vuex</div>
                 <div class="__skile">Vite</div>
                 <div class="__skile">Express</div>
-                <div class="__skile">Socket</div>
+                <!-- <div class="__skile">Socket</div> -->
                 <div class="__skile">MySQL</div>
                 <div class="__skile">AWS</div>
               </div>
@@ -126,7 +126,7 @@ function location(href) {
         </div>
   
         <!-- 4 -->
-        <div class="Project__Content">
+        <!-- <div class="Project__Content">
           <div class="a-animate" :class="{isFixed}">
             <div class="__Containers">
               <div class="__title">추가 예정</div>
@@ -153,7 +153,7 @@ function location(href) {
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
       </div>

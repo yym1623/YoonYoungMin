@@ -1,6 +1,5 @@
 <script setup>
 import { ref, watch, onMounted, onUpdated, onBeforeUnmount } from 'vue'
-import { scrolldefined } from './store/index'
 
 // script setup 기준으로 내장 함수로 콜백형식으로 불러오면 -> 반응형?, import로만 불러오면 정적? -> 차이 분석하자
 // components
@@ -47,38 +46,6 @@ const topBtn = () => {
   window.scrollTo({top: 0, behavior:'smooth'});
 }
 
-// onMounted(()=> {
-//   console.log(window.innerHeight)
-
-// })
-
-// onUpdated(()=> {
-//   // 자동완성 이 뜨면 문제는 없는거임 -> 그 후에 문제는 다른문제
-//   // console.log(test.value.offsetTop)
-//   // console.log(windowHeight.value.window.innerHeight)
-// })
-
-// watch(test, (e) => {
-//   // e로 들어온 값은 value포함이라 value없이 바로 접근
-//   console.log(e.offsetTop)
-//   // console.log(i)
-// })
-
-
-
-
-// 렌더링 전에 가져와서 오류나는듯  -> 조건처리
-// const test = () => {
-//   if(main.value.offsetTop) {
-//     console.log(main.value.offsetTop)
-//   }
-// }
-// const store = scrolldefined();
-
-// setup script에서 콘솔하면 처음에 mounted처럼 시작시 한번만 나온다 -> 렌더링된 후에 실행되니 마운티드랑 똑같다
-// -> 마운티드 안쓰고 바로 콘솔로해도 똑같나? -> 분석
-// test();
-
 </script>
 
 <template>
@@ -105,8 +72,8 @@ const topBtn = () => {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 .page__Container {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
   .Background__Container {
     background-color: rgb(34, 40, 49);
     position: fixed;

@@ -7,6 +7,8 @@ const header = ref();
 const isFixed = ref(false);
 const leftFixed = ref(false);
 
+const Main__Container = ref(null)
+
 // const isFixedf = computed(() => store.isFixed)
 // const isFixeds = computed(() => store.scrollChange(header.value.offsetTop))
 // 
@@ -26,13 +28,14 @@ const leftFixed = ref(false);
 // }
   // const scrollData = store.data
   function scroll() {
-  // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
-  if (window.scrollY > header.value.offsetTop + -300) {
-    isFixed.value = true;
-  } else {
-    isFixed.value = false;
+    // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
+    if (window.scrollY > header.value.offsetTop + -300) {
+      isFixed.value = true;
+      Main__Container.value.style.overflowX = 'hidden'
+    } else {
+      isFixed.value = false;
+    }
   }
-}
 // const dataChange = computed(() => store.isFixed)
 
 // const scrolls = store.isFixed
@@ -68,7 +71,7 @@ onMounted(() => {
 
 <template>
   <div class="__Container">
-    <div class="Main__Container">
+    <div class="Main__Container" ref="Main__Container">
       <div class="Name"  ref="header" :class="{isFixed}">
         <div class="Text" :class="{leftFixed}">YOON YOUNG MIN</div>
         <!-- <div class="Nickname" :class="{ rightFixed : rightFixed }">KANG MIN</div> -->
