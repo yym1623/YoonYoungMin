@@ -100,9 +100,17 @@
     }
   }
 }
+
+@media screen and (max-width:1224px) {
+  .__Container {
+    margin-top: 10rem;
+  }
+}
+
+
 @media screen and (max-width:1124px) {
   .__Container {
-    margin-top: 12rem;
+    margin-top: 30rem;
   }
 }
 </style>

@@ -37,7 +37,7 @@ function location(href) {
         </div>
         <div class="TextBox">
           <div class="__TextBox">
-            <div class="Texts __gmail">yym16233@gmail.com</div>
+            <div class="Texts __gmail" @click="location('mailto:yym16233@gmail.com')">yym16233@gmail.com</div>
             <div class="Texts __git" @click="location('https://github.com/yym1623')">GITHUB</div>
             <div class="Texts __blug" @click="location('https://young-min.netlify.app/')">BLUG</div>
             <div class="Texts __RESUME" @click="location('https://www.figma.com/file/03Le7GFj5cEVf3UOxmQcRE/%EC%9C%A4%EC%98%81%EB%AF%BC-%EC%9D%B4%EB%A0%A5%EC%84%9C?type=design&node-id=0%3A1&mode=design&t=0t8WvqDlul2v9ILp-1')">RESUM</div>
@@ -69,6 +69,7 @@ function location(href) {
     background-color: rgb(238, 238, 238);
     width: 70%;
     height: 100%;
+    min-height: 800px;
     border-radius: 50px;
     .Header {
       width: 100%;
@@ -194,6 +195,7 @@ function location(href) {
         font-size: 18px;
         .__Texts {
           margin-top: 30px;
+          font-size: 16px;
           span {
             background: linear-gradient(128.93deg, rgb(0, 173, 181) 22.41%, rgb(57, 62, 70) 93.45%);
             color: transparent;
