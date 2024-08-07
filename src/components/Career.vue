@@ -30,7 +30,7 @@
   font-family: Montserrat, sans-serif;
   width: 100%;
   height: 100%;
-  padding-top: 3rem;
+  padding-top: 8rem;
   .Carrer__Container {
     width: 90%;
     margin: auto;
