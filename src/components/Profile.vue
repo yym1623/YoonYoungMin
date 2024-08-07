@@ -39,7 +39,7 @@ function location(href) {
           <div class="__TextBox">
             <div class="Texts __gmail">yym16233@gmail.com</div>
             <div class="Texts __git" @click="location('https://github.com/yym1623')">GITHUB</div>
-            <div class="Texts __blug" @click="alerts()">BLUG</div>
+            <div class="Texts __blug" @click="location('https://young-min.netlify.app/')">BLUG</div>
             <div class="Texts __RESUME" @click="location('https://www.figma.com/file/03Le7GFj5cEVf3UOxmQcRE/%EC%9C%A4%EC%98%81%EB%AF%BC-%EC%9D%B4%EB%A0%A5%EC%84%9C?type=design&node-id=0%3A1&mode=design&t=0t8WvqDlul2v9ILp-1')">RESUM</div>
           </div>
         </div>
@@ -206,10 +206,24 @@ function location(href) {
     }
   }
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1124px) {
   .__Container {
     .Profile__Container {
-      width: 100%;
+      width: 90%;
+      height: auto;
+      .Des {
+        .__Des {
+          .__Texts {
+            font-size: 16px;
+            margin-bottom: 2rem;
+          }
+        }
+      }
+      .About {
+        .TextBox {
+          margin-left: 2rem;
+        }
+      }
     }
   } 
 }

@@ -170,11 +170,14 @@ function scroll() {
     }
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1124px) {
   .__Container {
     .Skile__Container {
       .Skiles {
         display: block;
+        .__Skiles  {
+          margin-top: 4rem;
+        }
       }
       .Skile__Item {
         display: none;

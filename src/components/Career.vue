@@ -10,7 +10,7 @@
         <div class="n__line ft"></div>
         <div class="n__line sc"></div>
         <div class="__MyCarrer_1">
-          <div class="__title"><span>LemonIT</span>(2023.08 ~ now)</div>
+          <div class="__title"><span>LemonIT</span>(2023.08 ~ 2024.08)</div>
           <div class="__about">SW 개발 (주임)</div>
         </div>
         <div class="__MyCarrer_2">
@@ -100,9 +100,9 @@
     }
   }
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1124px) {
   .__Container {
-    padding-top: 15rem;
+    margin-top: 12rem;
   }
 }
 </style>

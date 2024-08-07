@@ -336,7 +336,7 @@ function location(href) {
     }
   }
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1124px) {
   .__Container {
     .Project__Container {
       .__ContentBox {
