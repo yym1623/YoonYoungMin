@@ -1,25 +1,15 @@
 <script setup>
-
 </script>
 
 <template>
-  <div class="__Container">
-    <div class="Carrer__Container">
-      <div class="__reference">Designed Reference LeeJeongMin</div>
-      <div class="__developer">Developed By YoonYoungMin</div>
+  <footer
+    class="flex h-full w-full flex-col items-end justify-end bg-black px-4 pb-4 text-right font-[Montserrat] text-lg font-bold text-[#393e46] sm:px-8 sm:pb-8"
+  >
+    <div>
+      Designed Reference <span class="text-[#eeeeee]">LeeJeongMin</span>
     </div>
-  </div>
+    <div class="mt-1">
+      Developed By <span class="text-[#eeeeee]">YoonYoungMin</span>
+    </div>
+  </footer>
 </template>
-
-<style lang="scss" scoped>
-.__Container {
-  width: 100%;
-  height: 100%;
-  font-size: 1.2rem;
-  position: absolute;
-  bottom: 2rem;
-  /* right: 2rem; */
-  color: rgb(57, 62, 70);
-  font-weight: 800;
-}
-</style>

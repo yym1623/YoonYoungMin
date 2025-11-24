@@ -1,232 +1,153 @@
-<script setup>
-import { ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue'
 
-const myimg = ref(false);
+const myimg = ref(false)
 
-// location
-function location(href) {
-  window.open(href, "_blank");
+const openLink = (href: string) => {
+  window.open(href, '_blank')
 }
 
+type ParagraphPart = {
+  text: string
+  highlight?: boolean
+}
+
+type Paragraph = {
+  parts: ParagraphPart[]
+}
+
+const contactButtons = [
+  {
+    label: 'yym16233@gmail.com',
+    href: 'mailto:yym16233@gmail.com'
+  },
+  {
+    label: 'GITHUB',
+    href: 'https://github.com/yym1623'
+  },
+  {
+    label: 'BLUG',
+    href: 'https://young-min.netlify.app/'
+  },
+  {
+    label: 'RESUME',
+    href: 'https://www.figma.com/file/03Le7GFj5cEVf3UOxmQcRE/%EC%9C%A4%EC%98%81%EB%AF%BC-%EC%9D%B4%EB%A0%A5%EC%84%9C?type=design&node-id=0%3A1&mode=design&t=0t8WvqDlul2v9ILp-1'
+  }
+]
+
+const profileParagraphs: Paragraph[] = [
+  {
+    parts: [
+      { text: 'FrontEnd', highlight: true },
+      { text: ' 를 깊이 있게 다지고 싶은 ' },
+      { text: '주니어 개발자', highlight: true },
+      { text: ' 입니다!' }
+    ]
+  },
+  {
+    parts: [{ text: '로드맵을 보면서 Front, Back 가리지 않고 재밌게 배워가고 있습니다.' }]
+  },
+  {
+    parts: [
+      { text: '"몰아치는 파도를 피하지 말고 올라타라"', highlight: true },
+      { text: ' 는 문장이 최근 계속 떠오릅니다.' }
+    ]
+  },
+  {
+    parts: [
+      { text: '진행하다 막히고 해결할 때의 뿌듯함이 계속 ' },
+      { text: '추진력', highlight: true },
+      { text: ' 이 되어줍니다.' }
+    ]
+  },
+  {
+    parts: [
+      { text: '항상 새로운 프로젝트를 만들면서 저 자신을 ' },
+      { text: '성장시키는 기회', highlight: true },
+      { text: ' 를 얻고 있습니다.' }
+    ]
+  }
+]
 
 </script>
 
 <template>
-  <div class="__Container">
-    <div class="Profile__Container">
-      <div class="Header">
-        <div class="__Header">
-          <div class="__Text">FrontEnd</div>
-          <div class="__Line"></div>
+  <section class="flex min-h-[90vh] w-full items-center justify-center px-4 py-12">
+    <div class="w-full max-w-5xl rounded-[50px] bg-[#eeeeee] px-6 py-10 shadow-xl lg:px-12">
+      <header class="flex w-full justify-center">
+        <div class="text-center">
+          <p class="font-['Montserrat',sans-serif] text-4xl font-semibold text-[#00adb5] sm:text-6xl">
+            FrontEnd
+          </p>
+          <div class="mt-3 h-1 w-full rounded-full bg-gradient-to-r from-[#74ebd5] to-[#9face6] sm:h-1.5"></div>
         </div>
-      </div>
-      <div class="About">
-        <div class="ImageBox">
-          <div class="__Img" @mouseover="myimg = true" @mouseleave="myimg = false" :class="{ myimg : myimg }" >
-            <div class="__Job">Developer</div>
-            <img class="__MyImg" src="../assets/myimg.png" alt="MyImg">
+      </header>
 
-            <div class="On__MyImg">
-              <div class="__OnBox">
-                <div class="__Item __Name">윤영민</div>
-                <div class="__Item __BirthDay">1998.03.12</div>
+      <div
+        class="mt-12 flex flex-col items-center justify-center gap-10 font-['Montserrat',sans-serif] lg:flex-row lg:items-center lg:gap-16"
+      >
+        <div class="flex flex-col items-center">
+          <div
+            class="relative h-[200px] w-[200px] cursor-pointer rounded-full bg-[#00adb5] transition-all duration-300"
+            @mouseenter="myimg = true"
+            @mouseleave="myimg = false"
+          >
+            <div
+              class="absolute -left-4 top-6 inline-flex -rotate-6 items-center rounded-[2rem] border-[0.2rem] border-white bg-[#393e46] px-4 py-2 font-extrabold text-xl text-[#eeeeee]"
+            >
+              Developer
+            </div>
+            <img
+              src="@/assets/myimg.png"
+              alt="MyImg"
+              class="absolute -bottom-4 right-2 w-[120px]"
+            />
+            <div
+              :class="[
+                'absolute inset-0 flex flex-col items-center justify-center rounded-full bg-[rgba(57,50,70,0.6)] text-white transition-opacity duration-300',
+                myimg ? 'opacity-100' : 'opacity-0'
+              ]"
+            >
+              <div class="text-center">
+                <p class="text-lg">윤영민</p>
+                <p class="mt-2 text-sm">1998.03.12</p>
               </div>
             </div>
           </div>
-          <div class="__about"></div>
         </div>
-        <div class="TextBox">
-          <div class="__TextBox">
-            <div class="Texts __gmail" @click="location('mailto:yym16233@gmail.com')">yym16233@gmail.com</div>
-            <div class="Texts __git" @click="location('https://github.com/yym1623')">GITHUB</div>
-            <div class="Texts __blug" @click="location('https://young-min.netlify.app/')">BLUG</div>
-            <div class="Texts __RESUME" @click="location('https://www.figma.com/file/03Le7GFj5cEVf3UOxmQcRE/%EC%9C%A4%EC%98%81%EB%AF%BC-%EC%9D%B4%EB%A0%A5%EC%84%9C?type=design&node-id=0%3A1&mode=design&t=0t8WvqDlul2v9ILp-1')">RESUM</div>
+
+        <div>
+          <div
+            class="flex h-52 flex-col items-center justify-center rounded-[2.5rem] border-[0.2rem] border-[#00adb5] py-6 text-center tracking-wide"
+          >
+            <button
+              v-for="button in contactButtons"
+              :key="button.label"
+              type="button"
+              class="w-[100%] rounded-2xl border-[0.5rem] border-[#eeeeee] bg-[#393e46] px-8 py-2 text-lg text-[#eeeeee] transition-colors duration-200 hover:bg-[#00adb5]"
+              @click="openLink(button.href)"
+            >
+              {{ button.label }}
+            </button>
           </div>
         </div>
       </div>
-      <div class="Des">
-        <div class="__Des">
-          <div class="__Texts"><span>FrontEnd</span>를 깊이 있게 다지고 싶은 <span>주니어 개발자</span>입니다!</div>
-          <div class="__Texts">로드맵을 보면서 Front, Back 가리지 않고 재밌게 배워가고 있습니다</div>
-          <div class="__Texts"><span>"몰아치는 파도를 피하지 말고 올라타라"</span> 최근 계속 떠올리는 말입니다!</div>
-          <div class="__Texts">진행하다 막히고 그것을 해결할 때의 뿌듯함은 저한테는 계속 <span>추진력</span>이 되어주고 있습니다</div>
-          <div class="__Texts">항상 새로운 프로젝트를 만들면서 저 자신을 <span>성장시키는 기회</span>를 얻고 있습니다</div>
+
+      <div class="mt-12 flex w-full justify-center px-4 pb-6">
+        <div class="max-w-3xl space-y-6 text-base text-[#222] sm:text-lg">
+          <p v-for="(paragraph, idx) in profileParagraphs" :key="idx">
+            <template v-for="(part, partIdx) in paragraph.parts" :key="partIdx">
+              <span
+                v-if="part.highlight"
+                class="bg-gradient-to-r from-[#00adb5] to-[#393e46] bg-clip-text text-xl font-bold text-transparent"
+              >
+                {{ part.text }}
+              </span>
+              <span v-else>{{ part.text }}</span>
+            </template>
+          </p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
-
-<style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-.__Container {
-  width: 100%;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .Profile__Container {
-    background-color: rgb(238, 238, 238);
-    width: 70%;
-    height: 100%;
-    min-height: 800px;
-    border-radius: 50px;
-    .Header {
-      width: 100%;
-      padding-top: 50px;
-      display: flex;
-      justify-content: center;
-      .__Header {
-        .__Text {
-          font-family: 'Montserrat', sans-serif;
-          font-size: 75px;
-          color: rgb(0, 173, 181);
-        }
-        .__Line {
-          background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);height: 4px;
-          border-radius: 20px;
-          margin-top: 10px;
-        }
-      }
-
-    }
-    .About {
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 0;
-      .ImageBox {
-        .__Img {
-          position: relative;
-          background-color: rgb(0, 173, 181);;
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          .__Job {
-            position: absolute;
-            background-color: rgb(57, 62, 70);
-            padding: 0.5rem 1.5rem;
-            font-weight: 800;
-            font-size: 1.5rem;
-            border-radius: 2rem;
-            color: rgb(238, 238, 238);
-            left: -1rem;
-            top: 1.8rem;
-            transform: rotate(-10deg);
-            border: 0.2rem solid white;
-          }
-          .__MyImg {
-            position: absolute;
-            right: 0;
-            bottom: -10px;
-            width: 120px;
-          }
-          .On__MyImg {
-            opacity: 0;
-          }
-        }
-        .__Img.myimg {
-          position: relative;
-          .On__MyImg {
-            position: absolute;
-            z-index: 10;
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color:rgba(57, 50, 70, 0.6);
-            color: #fff;
-            border-radius: 50%;
-            .__OnBox {
-              text-align: center;
-              .__Item {
-                margin-top: 10px;
-              }
-              .__Item:first-child {
-                margin-top: 0;
-              }
-            }
-          }
-        }
-        .__Img:hover {
-          cursor: pointer;
-          
-        }
-      }
-      .TextBox {
-        margin-left: 6rem;
-        .__TextBox {
-          border-radius: 2.5rem;
-          padding: 4rem;
-          box-sizing: border-box;
-          height: 13rem;
-          display: flex;
-          letter-spacing: 0.1rem;
-          flex-direction: column;
-          -webkit-box-align: center;
-          align-items: center;
-          -webkit-box-pack: center;
-          justify-content: center;
-          border: 0.2rem solid rgb(0, 173, 181);
-          .Texts {
-            font-size: 18px;
-            cursor: pointer;
-            width: 100%;
-            padding: 0.8rem 2rem;
-            border-radius: 2rem;
-            border: 0.5rem solid rgb(238, 238, 238);
-            background-color: rgb(57, 62, 70);
-            color: rgb(238, 238, 238);
-          }
-          .Texts:hover {
-            background-color: rgb(0, 173, 181);
-          }
-        }
-      }
-    }
-    .Des {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      .__Des {
-        font-size: 18px;
-        .__Texts {
-          margin-top: 30px;
-          font-size: 16px;
-          span {
-            background: linear-gradient(128.93deg, rgb(0, 173, 181) 22.41%, rgb(57, 62, 70) 93.45%);
-            color: transparent;
-            -webkit-background-clip: text;
-            font-size: 20px;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (max-width:1124px) {
-  .__Container {
-    .Profile__Container {
-      width: 90%;
-      height: auto;
-      .Des {
-        .__Des {
-          .__Texts {
-            font-size: 16px;
-            margin-bottom: 2rem;
-          }
-        }
-      }
-      .About {
-        .TextBox {
-          margin-left: 2rem;
-        }
-      }
-    }
-  } 
-}
-</style>

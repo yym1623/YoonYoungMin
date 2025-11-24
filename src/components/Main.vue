@@ -1,13 +1,13 @@
-<script setup>
-import { ref, onMounted, onUpdated, computed, watch } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, onUpdated } from 'vue'
 // import { scrolldefined } from '../store/index'
 // const store = scrolldefined();
-const header = ref();
+const header = ref<HTMLElement | null>(null)
 
-const isFixed = ref(false);
-const leftFixed = ref(false);
+const isFixed = ref(false)
+const leftFixed = ref(false)
 
-const Main__Container = ref(null)
+const Main__Container = ref<HTMLElement | null>(null)
 
 // const isFixedf = computed(() => store.isFixed)
 // const isFixeds = computed(() => store.scrollChange(header.value.offsetTop))
@@ -27,15 +27,20 @@ const Main__Container = ref(null)
 //   return store.scrollChange(size)
 // }
   // const scrollData = store.data
-  function scroll() {
-    // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
-    if (window.scrollY > header.value.offsetTop + -300) {
-      isFixed.value = true;
-      Main__Container.value.style.overflowX = 'hidden'
-    } else {
-      isFixed.value = false;
-    }
+function scroll() {
+  if (!header.value) {
+    return
   }
+  // offsetTop & offsetTop + height로 계산해서 할 수도 있다 (offset - offsetTop만 존재)
+  if (window.scrollY > header.value.offsetTop + -300) {
+    isFixed.value = true
+    if (Main__Container.value) {
+      Main__Container.value.style.overflowX = 'hidden'
+    }
+  } else {
+    isFixed.value = false
+  }
+}
 // const dataChange = computed(() => store.isFixed)
 
 // const scrolls = store.isFixed
@@ -63,17 +68,26 @@ onMounted(() => {
 
   // console.log('scroll tests')
   // console.log(scrollData.value)
-  leftFixed.value = true;
-  document.addEventListener("scroll", scroll);
+  leftFixed.value = true
+  document.addEventListener('scroll', scroll)
 })
 
 </script>
 
 <template>
-  <div class="__Container">
-    <div class="Main__Container" ref="Main__Container">
-      <div class="Name"  ref="header" :class="{isFixed}">
-        <div class="Text" :class="{leftFixed}">YOON YOUNG MIN</div>
+  <div class="__Container flex w-full">
+    <div
+      class="Main__Container flex h-full w-full items-center justify-center font-['Montserrat',sans-serif] text-[5rem] md:text-[7rem]"
+      ref="Main__Container"
+    >
+      <div class="Name" ref="header" :class="{ isFixed }">
+        <div
+          class="Text text-center text-[#eeeeee]"
+          :class="{ leftFixed }"
+          :style="{ '-webkit-text-stroke': '0.02em #00adb5' }"
+        >
+          YOON YOUNG MIN
+        </div>
         <!-- <div class="Nickname" :class="{ rightFixed : rightFixed }">KANG MIN</div> -->
       </div>
     </div>
@@ -81,73 +95,33 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-.__Container {
-  width: 100%;
-  height: 100%;
-  .Main__Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 7rem;
-    .Name {
-      color: rgb(238,238,238);
-      -webkit-text-stroke: 0.02em rgb(0, 173, 181);
-      .Text.leftFixed {
-        animation: fadeInLeft 1s;
-        @keyframes fadeInLeft {
-          0% {
-            opacity: 0;
-            transform: translate3d(-100%, 0, 0);
-          }
-          to {
-            opacity: 1;
-            transform: translateZ(0);
-          }
-        }
-      }
+.Text.leftFixed {
+  animation: fadeInLeft 1s;
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
     }
-    .Name.isFixed {
-      transition: .8s;
-      animation: fadeInRight 1s;
-        @keyframes fadeInRight {
-          0% {
-            transform: translateZ(0);
-            opacity: 1;
-          }
-          to {
-            transform: translate3d(100%, 0, 0);
-            opacity: 0;
-          }
-        }
-        visibility: hidden;
-      // transform: translate3d(0, 70%, 0);
-      // opacity: 0;
-      // visibility: hidden;
-      /* animation: fadout 1s;
-      @keyframes fadout {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-          transform: translate3d(0, 30%, 0);
-        }
-      } */
-
+    to {
+      opacity: 1;
+      transform: translateZ(0);
     }
   }
 }
-@media screen and (max-width:1024px) {
-  .__Container {
-    width: 100%;
-    height: 100%;
-    .Main__Container {
-      font-size: 5rem;
+
+.Name.isFixed {
+  transition: 0.8s;
+  animation: fadeInRight 1s;
+  @keyframes fadeInRight {
+    0% {
+      transform: translateZ(0);
+      opacity: 1;
+    }
+    to {
+      transform: translate3d(100%, 0, 0);
+      opacity: 0;
     }
   }
+  visibility: hidden;
 }
 </style>
