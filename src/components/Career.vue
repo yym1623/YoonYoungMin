@@ -2,32 +2,28 @@
 type CareerItem = {
   company: string
   period: string
-  role: string
-  description?: string
-  color: string
+  position: string
+  grade: string
 }
 
 const careerItems: CareerItem[] = [
   {
     company: '피어라인',
     period: '2024.09 ~ 2025.11',
-    role: '프론트엔드 개발 (대리)',
-    description: '고객 맞춤 SaaS 대시보드 및 실시간 협업 기능 구축',
-    color: 'from-[#ff9a62] to-[#ff6f61]'
+    position: '프론트엔드 개발',
+    grade: '대리'
   },
   {
     company: '레몬아이티',
     period: '2023.08 ~ 2024.08',
-    role: '프론트엔드 개발 (주임)',
-    description: '사내 디자인 시스템 정비 및 대시보드 성능 최적화',
-    color: 'from-[#70c1ff] to-[#4a90e2]'
+    position: '프론트엔드 개발',
+    grade: '주임'
   },
   {
     company: '일렉트리',
     period: '2021.10 ~ 2023.01',
-    role: 'SW 개발 (연구원)',
-    description: 'IoT 디바이스 관제 웹 및 관리자 페이지 개발',
-    color: 'from-[#9face6] to-[#74ebd5]'
+    position: 'SW 개발',
+    grade: '연구원'
   }
 ]
 </script>
@@ -44,38 +40,38 @@ const careerItems: CareerItem[] = [
       </div>
 
       <div class="relative mt-14">
-        <div class="absolute left-5 top-0 h-full w-0.5 bg-gradient-to-b from-[#c84b31] to-transparent md:left-1/2 md:-translate-x-px"></div>
+        <div class="absolute left-5 top-0 z-10 h-full w-0.5 bg-gradient-to-b from-[#c84b31]  to-transparent md:left-1/2 md:-translate-x-1/2"></div>
 
         <div class="flex flex-col gap-10">
           <article
             v-for="(career, idx) in careerItems"
             :key="career.company"
             :class="[
-              'relative rounded-3xl border border-[#e5e7eb] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-[#00adb5]',
+              'relative border border-[#e5e7eb] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-[#00adb5]',
               'md:w-1/2',
-              idx % 2 === 0 ? 'md:self-start md:mr-auto md:pr-8' : 'md:self-end md:ml-auto md:pl-8'
+              idx % 2 === 0
+                ? 'md:self-start md:mr-auto md:pr-8 rounded-tl-[32px] rounded-bl-[32px]'
+                : 'md:self-end md:ml-auto md:pl-8 rounded-tr-[32px] rounded-br-[32px]'
             ]"
           >
-            <!-- <div
-              class="absolute left-4 top-6 flex h-10 w-10 items-center justify-center rounded-full border-4 border-white bg-[#c84b31] text-sm font-bold text-white shadow-lg md:left-auto md:-translate-x-1/2"
-              :class="idx % 2 === 0 ? 'md:right-0' : 'md:left-0'"
-            >
-              {{ idx + 1 }}
-            </div> -->
-            <div class="mt-6 md:mt-0">
-              <div class="flex flex-wrap items-center gap-3">
-                <h3 class="text-2xl font-bold text-[#111827]">{{ career.company }}</h3>
-                <span
-                  class="rounded-full bg-gradient-to-r px-4 py-1 text-sm font-semibold text-[#111827]"
-                  :class="[career.color]"
-                >
-                  {{ career.period }}
-                </span>
+            <div class="mt-6 space-y-2 md:mt-0">
+              <h3 class="text-2xl font-bold text-[#111827]">{{ career.company }}</h3>
+              <div class="rounded-2xl border border-[#f3f4f6] bg-[#f9fafb] px-4 py-2 text-sm text-[#4b5563]">
+                <p class="font-semibold tracking-wide text-[#c84b31]">기간</p>
+                <p class="text-base font-bold text-[#0f172a]">{{ career.period }}</p>
               </div>
-              <p class="mt-2 text-base font-semibold text-[#c84b31]">{{ career.role }}</p>
-              <p v-if="career.description" class="mt-2 text-base text-[#4b5563]">
-                {{ career.description }}
-              </p>
+              <div class="rounded-2xl border border-[#f3f4f6] bg-[#f9fafb] px-4 py-2 text-sm text-[#4b5563]">
+                <p class="font-semibold tracking-wide text-[#c84b31]">직급</p>
+                <p class="text-base font-bold text-[#0f172a]">{{ career.grade }}</p>
+              </div>
+              <div class="rounded-2xl border border-[#f3f4f6] bg-[#f9fafb] px-4 py-2 text-sm text-[#4b5563]">
+                <p class="font-semibold tracking-wide text-[#c84b31]">직책</p>
+                <p class="text-base font-bold text-[#0f172a]">{{ career.position }}</p>
+              </div>
+              <div class="rounded-2xl border border-[#f3f4f6] bg-[#f9fafb] px-4 py-2 text-sm text-[#4b5563]">
+                <p class="font-semibold tracking-wide text-[#c84b31]">부서</p>
+                <p class="text-base font-bold text-[#0f172a]">개발부서</p>
+              </div>
             </div>
           </article>
         </div>

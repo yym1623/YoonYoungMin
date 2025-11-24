@@ -49,8 +49,7 @@ const profileParagraphs: Paragraph[] = [
   },
   {
     parts: [
-      { text: '"몰아치는 파도를 피하지 말고 올라타라"', highlight: true },
-      { text: ' 는 문장이 최근 계속 떠오릅니다.' }
+      { text: '"몰아치는 파도를 피하지 말고 올라타라"', highlight: true }
     ]
   },
   {
@@ -72,80 +71,109 @@ const profileParagraphs: Paragraph[] = [
 </script>
 
 <template>
-  <section class="flex min-h-[90vh] w-full items-center justify-center px-4 py-12">
-    <div class="w-full max-w-5xl rounded-[50px] bg-[#eeeeee] px-6 py-10 shadow-xl lg:px-12">
-      <header class="flex w-full justify-center">
-        <div class="text-center">
-          <p class="font-['Montserrat',sans-serif] text-4xl font-semibold text-[#00adb5] sm:text-6xl">
-            FrontEnd
+  <section
+    class="relative isolate flex min-h-[90vh] w-full items-center justify-center  from-[#050d21] via-[#0f1a33] to-[#111a2c] px-6 py-16 text-white"
+  >
+    <div class="pointer-events-none absolute inset-0 opacity-40">
+      <div class="absolute -top-10 left-10 h-64 w-64 rounded-full  "></div>
+      <div class="absolute bottom-0 right-0 h-80 w-80 rounded-full "></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.05),_transparent_55%)]"></div>
+    </div>
+
+    <div class="relative grid w-full max-w-6xl gap-12 rounded-[48px] border border-white/10 bg-white/5 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-3xl lg:grid-cols-2 lg:p-12">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#74ebd5]">
+          Profile
+          <span class="h-1 w-1 rounded-full bg-[#74ebd5]"></span>
+          윤영민
+        </div>
+        <div class="space-y-4">
+          <p class="font-['Montserrat',sans-serif] text-xs uppercase tracking-[0.6em] text-white/50">
+            FrontEnd · Product · Growth
           </p>
-          <div class="mt-3 h-1 w-full rounded-full bg-gradient-to-r from-[#74ebd5] to-[#9face6] sm:h-1.5"></div>
-        </div>
-      </header>
-
-      <div
-        class="mt-12 flex flex-col items-center justify-center gap-10 font-['Montserrat',sans-serif] lg:flex-row lg:items-center lg:gap-16"
-      >
-        <div class="flex flex-col items-center">
-          <div
-            class="relative h-[200px] w-[200px] cursor-pointer rounded-full bg-[#00adb5] transition-all duration-300"
-            @mouseenter="myimg = true"
-            @mouseleave="myimg = false"
-          >
-            <div
-              class="absolute -left-4 top-6 inline-flex -rotate-6 items-center rounded-[2rem] border-[0.2rem] border-white bg-[#393e46] px-4 py-2 font-extrabold text-xl text-[#eeeeee]"
-            >
-              Developer
-            </div>
-            <img
-              src="@/assets/myimg.png"
-              alt="MyImg"
-              class="absolute -bottom-4 right-2 w-[120px]"
-            />
-            <div
-              :class="[
-                'absolute inset-0 flex flex-col items-center justify-center rounded-full bg-[rgba(57,50,70,0.6)] text-white transition-opacity duration-300',
-                myimg ? 'opacity-100' : 'opacity-0'
-              ]"
-            >
-              <div class="text-center">
-                <p class="text-lg">윤영민</p>
-                <p class="mt-2 text-sm">1998.03.12</p>
-              </div>
-            </div>
-          </div>
+          <p class="font-['Montserrat',sans-serif] text-4xl font-black text-white sm:text-5xl">
+            파도를 즐기는 <span class="text-[#74ebd5]">FrontEnd Explorer</span>
+          </p>
         </div>
 
-        <div>
-          <div
-            class="flex h-52 flex-col items-center justify-center rounded-[2.5rem] border-[0.2rem] border-[#00adb5] py-6 text-center tracking-wide"
-          >
-            <button
-              v-for="button in contactButtons"
-              :key="button.label"
-              type="button"
-              class="w-[100%] rounded-2xl border-[0.5rem] border-[#eeeeee] bg-[#393e46] px-8 py-2 text-lg text-[#eeeeee] transition-colors duration-200 hover:bg-[#00adb5]"
-              @click="openLink(button.href)"
-            >
-              {{ button.label }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 flex w-full justify-center px-4 pb-6">
-        <div class="max-w-3xl space-y-6 text-base text-[#222] sm:text-lg">
+        <div class="space-y-5 text-lg text-white/80">
           <p v-for="(paragraph, idx) in profileParagraphs" :key="idx">
             <template v-for="(part, partIdx) in paragraph.parts" :key="partIdx">
               <span
                 v-if="part.highlight"
-                class="bg-gradient-to-r from-[#00adb5] to-[#393e46] bg-clip-text text-xl font-bold text-transparent"
+                class="bg-gradient-to-r from-[#74ebd5] to-[#00adb5] bg-clip-text text-2xl font-semibold text-transparent"
               >
                 {{ part.text }}
               </span>
               <span v-else>{{ part.text }}</span>
             </template>
           </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-3xl border border-white/10 bg-white/[0.06] px-6 py-5 shadow-inner shadow-white/5">
+            <p class="text-xs uppercase tracking-[0.35em] text-white/40">Projects</p>
+            <p class="mt-2 text-3xl font-bold text-white">+15</p>
+            <p class="text-sm text-white/60">Personal & team shipped</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/[0.06] px-6 py-5 shadow-inner shadow-white/5">
+            <p class="text-xs uppercase tracking-[0.35em] text-white/40">Stack</p>
+            <p class="mt-2 text-3xl font-bold text-white">Vue · TS</p>
+            <p class="text-sm text-white/60">Design systems obsessed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div
+          class="relative overflow-hidden rounded-[36px] border border-white/20 bg-gradient-to-b from-white/20 to-white/5 p-6 shadow-[0_15px_45px_rgba(10,10,60,0.4)]"
+          @mouseenter="myimg = true"
+          @mouseleave="myimg = false"
+        >
+          <p class="inline-flex items-center gap-2 rounded-full bg-black/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
+            Active
+            <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
+          </p>
+          <div class="mt-6 flex flex-col items-center gap-6 text-center">
+            <div class="relative h-48 w-48">
+              <div class="absolute inset-0 rounded-[36px] border border-white/30 bg-white/10 backdrop-blur-md transition duration-300" :class="myimg ? 'scale-105 border-white/60' : ''"></div>
+              <img
+                src="@/assets/myimg.png"
+                alt="My profile image"
+                class="absolute inset-x-6 bottom-0 w-[70%] object-contain"
+              />
+              <div
+                :class="[
+                  'absolute inset-0 flex flex-col items-center justify-center rounded-[36px] bg-slate-950/70 text-white transition-opacity duration-300',
+                  myimg ? 'opacity-100' : 'opacity-0'
+                ]"
+              >
+                <p class="text-lg font-semibold">윤영민</p>
+                <p class="mt-1 text-sm tracking-widest text-white/70">1998.03.12</p>
+              </div>
+            </div>
+            <div class="space-y-1 font-['Montserrat',sans-serif]">
+              <p class="text-sm uppercase tracking-[0.35em] text-white/40">Position</p>
+              <p class="text-2xl font-semibold text-white">FrontEnd Developer</p>
+              <p class="text-sm text-white/60">생각을 인터랙션으로 풀어내는 사람</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[32px] border border-white/15 bg-white/5 p-6 shadow-inner shadow-black/20">
+          <p class="text-xs uppercase tracking-[0.45em] text-white/40">Contact</p>
+          <div class="mt-4 space-y-3">
+            <button
+              v-for="button in contactButtons"
+              :key="button.label"
+              type="button"
+              class="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-3 text-left text-base font-semibold text-white/90 transition hover:-translate-y-[2px] hover:border-[#74ebd5]/60 hover:bg-white/10"
+              @click="openLink(button.href)"
+            >
+              <span>{{ button.label }}</span>
+              <span class="text-xs font-medium text-[#74ebd5]">OPEN</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

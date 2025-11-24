@@ -95,7 +95,7 @@ const openLink = (href: string) => {
           :key="project.title"
           :class="[
             'relative overflow-hidden rounded-3xl border border-[#e5e7eb] bg-white p-8 shadow-[0_25px_80px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#00adb5]',
-            idx % 2 === 0 ? 'md:ml-12' : 'md:mr-12'
+            idx % 2 === 0 ? 'md:mr-14' : 'md:ml-14'
           ]"
         >
           <div class="h-1.5 w-16 rounded-full bg-gradient-to-r" :class="project.accent"></div>

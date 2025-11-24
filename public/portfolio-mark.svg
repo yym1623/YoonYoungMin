@@ -1,0 +1,45 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#74EBD5"/>
+      <stop offset="50%" stop-color="#00ADB5"/>
+      <stop offset="100%" stop-color="#393E46"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#A5B4FC"/>
+    </linearGradient>
+    <clipPath id="clip">
+      <rect x="0" y="0" width="180" height="180" rx="36"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="180" height="180" rx="36" fill="url(#bg)" />
+
+    <circle cx="40" cy="50" r="12" fill="white" fill-opacity="0.2"/>
+    <circle cx="140" cy="32" r="18" fill="white" fill-opacity="0.12"/>
+    <circle cx="28" cy="130" r="18" fill="white" fill-opacity="0.12"/>
+    <circle cx="150" cy="140" r="12" fill="white" fill-opacity="0.18"/>
+
+    <path
+      d="M55 132V48L92 68.5L125 48V132"
+      stroke="url(#stroke)"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+    <path
+      d="M68 106C89 118 109 118 126 104"
+      stroke="#F8FAFC"
+      stroke-width="6"
+      stroke-linecap="round"
+      fill="none"
+      opacity="0.8"
+    />
+    <circle cx="90" cy="90" r="18" fill="white" fill-opacity="0.2"/>
+    <circle cx="90" cy="90" r="8" fill="white"/>
+  </g>
+</svg>
+

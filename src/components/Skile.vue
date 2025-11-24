@@ -53,6 +53,18 @@ const skillHighlights: SkillHighlight[] = [
       'Babel · TypeScript 기반 모던 문법에 익숙'
     ],
     accent: 'from-[#fbbf24] to-[#f97316]'
+  },
+  {
+    title: 'Build & DevOps',
+    summary: '빌드 속도 최적화 및 서비스 성장 단계에 맞춘 환경 구성.',
+    bullets: ['Vite · Webpack 구성 최적화', 'Docker 기반 로컬/배포 환경화', 'CI/CD(GitHub Actions) 파이프라인 설계', 'AWS S3 · CloudFront 배포 운영'],
+    accent: 'from-[#38bdf8] to-[#0ea5e9]'
+  },
+  {
+    title: 'Collaboration Tools',
+    summary: '협업 도구를 활용해 디자인, 기획, 개발 간 커뮤니케이션을 명확하게 유지',
+    bullets: ['Jira · Notion 중심의 업무 정리', 'Figma 프로토타입 피드백', 'Slack 실시간 커뮤니케이션', 'Postman · Swagger 기반 API 협업'],
+    accent: 'from-[#94a3b8] to-[#475569]'
   }
 ]
 </script>
