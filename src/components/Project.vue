@@ -51,7 +51,8 @@ const projectCards: ProjectCard[] = [
       { label: 'Demo', href: 'http://54.180.193.83:8080/', variant: 'primary' },
       { label: 'GitHub', href: 'https://github.com/yym1623/Convenience', variant: 'secondary' }
     ],
-    accent: 'from-[#ffd6a5] to-[#ff6f61]'
+    accent: 'from-[#a3ffd4] to-[#00adb5]'
+
   },
   {
     title: 'Instagram 클론 개발',
@@ -69,7 +70,8 @@ const projectCards: ProjectCard[] = [
       { label: 'Demo', href: 'https://y-instagram.netlify.app/#/login', variant: 'primary' },
       { label: 'GitHub', href: 'https://github.com/yym1623/instagram', variant: 'secondary' }
     ],
-    accent: 'from-[#9face6] to-[#9f7aea]'
+    accent: 'from-[#a3ffd4] to-[#00adb5]'
+
   }
 ]
 
@@ -79,7 +81,7 @@ const openLink = (href: string) => {
 </script>
 
 <template>
-  <section class="w-full bg-white py-24">
+  <section class="w-full py-24">
     <div class="mx-auto max-w-6xl px-4 font-['Montserrat',sans-serif] md:px-10 lg:px-16">
       <div class="text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.5em] text-[#00adb5]">Selected work</p>

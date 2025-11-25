@@ -40,7 +40,7 @@ const careerItems: CareerItem[] = [
       </div>
 
       <div class="relative mt-14">
-        <div class="absolute left-5 top-0 z-10 h-full w-0.5 bg-gradient-to-b from-[#c84b31]  to-transparent md:left-1/2 md:-translate-x-1/2"></div>
+        <div class="absolute left-5 top-0 h-full w-0.5 bg-gradient-to-b from-[#c84b31]  to-transparent md:left-1/2 md:-translate-x-1/2 md:z-10"></div>
 
         <div class="flex flex-col gap-10">
           <article
@@ -48,10 +48,11 @@ const careerItems: CareerItem[] = [
             :key="career.company"
             :class="[
               'relative border border-[#e5e7eb] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-[#00adb5]',
+              'rounded-[32px] md:rounded-none',
               'md:w-1/2',
               idx % 2 === 0
-                ? 'md:self-start md:mr-auto md:pr-8 rounded-tl-[32px] rounded-bl-[32px]'
-                : 'md:self-end md:ml-auto md:pl-8 rounded-tr-[32px] rounded-br-[32px]'
+                ? 'md:self-start md:mr-auto md:pr-8 md:rounded-tl-[32px] md:rounded-bl-[32px]'
+                : 'md:self-end md:ml-auto md:pl-8 md:rounded-tr-[32px] md:rounded-br-[32px]'
             ]"
           >
             <div class="mt-6 space-y-2 md:mt-0">

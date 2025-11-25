@@ -74,7 +74,7 @@ const profileParagraphs: Paragraph[] = [
   <section
     class="relative isolate flex min-h-[90vh] w-full items-center justify-center  from-[#050d21] via-[#0f1a33] to-[#111a2c] px-6 py-16 text-white"
   >
-    <div class="pointer-events-none absolute inset-0 opacity-40">
+    <div class="pointer-events-none absolute inset-0 opacity-0">
       <div class="absolute -top-10 left-10 h-64 w-64 rounded-full  "></div>
       <div class="absolute bottom-0 right-0 h-80 w-80 rounded-full "></div>
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.05),_transparent_55%)]"></div>
@@ -110,7 +110,7 @@ const profileParagraphs: Paragraph[] = [
           </p>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
+        <!-- <div class="grid gap-4 sm:grid-cols-2">
           <div class="rounded-3xl border border-white/10 bg-white/[0.06] px-6 py-5 shadow-inner shadow-white/5">
             <p class="text-xs uppercase tracking-[0.35em] text-white/40">Projects</p>
             <p class="mt-2 text-3xl font-bold text-white">+15</p>
@@ -121,7 +121,7 @@ const profileParagraphs: Paragraph[] = [
             <p class="mt-2 text-3xl font-bold text-white">Vue · TS</p>
             <p class="text-sm text-white/60">Design systems obsessed</p>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="space-y-6">
@@ -140,7 +140,7 @@ const profileParagraphs: Paragraph[] = [
               <img
                 src="@/assets/myimg.png"
                 alt="My profile image"
-                class="absolute inset-x-6 bottom-0 w-[70%] object-contain"
+                class="absolute inset-0 m-auto w-[70%] object-contain"
               />
               <div
                 :class="[

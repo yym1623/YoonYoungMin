@@ -7,36 +7,45 @@ import Project from '@/components/Project.vue'
 import Career from '@/components/Career.vue'
 import Stars from '@/components/Stars.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
-import Footer from '@/components/Footer.vue'
 
+import { registerScrollWatcher, unregisterScrollWatcher } from '@/utils/useScroll'
+
+const main = ref<HTMLElement | null>(null)
 const carreers = ref<HTMLElement | null>(null)
 const carreerActive = ref(false)
 const topActive = ref(false)
 
-const scrollEvent = () => {
-  if (carreers.value) {
-    // 배경색 변경
-    if (window.scrollY > carreers.value.offsetTop + -200) {
-      carreerActive.value = true
-    } else {
-      carreerActive.value = false
-    }
-
-    // 스크롤 탑 버튼 표시
-    if (window.scrollY > carreers.value.offsetTop) {
-      topActive.value = true
-    } else {
-      topActive.value = false
-    }
-  }
-}
-
 onMounted(() => {
-  document.addEventListener('scroll', scrollEvent)
+  // Main 섹션을 벗어나면 ScrollToTop 표시
+  registerScrollWatcher({
+    elementRef: main,
+    thresholds: [
+      {
+        threshold: 0,
+        callback: (isActive) => {
+          topActive.value = isActive
+        }
+      }
+    ]
+  })
+
+  // Career 섹션 기준 배경색 변경
+  registerScrollWatcher({
+    elementRef: carreers,
+    thresholds: [
+      {
+        threshold: -200,
+        callback: (isActive) => {
+          carreerActive.value = isActive
+        }
+      }
+    ]
+  })
 })
 
 onBeforeUnmount(() => {
-  document.removeEventListener('scroll', scrollEvent)
+  unregisterScrollWatcher(main)
+  unregisterScrollWatcher(carreers)
 })
 </script>
 
@@ -50,13 +59,12 @@ onBeforeUnmount(() => {
     </div>
 
     <div class="relative flex flex-col">
-      <section class="flex min-h-screen w-full"><Main  /></section>
+      <section ref="main" class="flex min-h-screen w-full"><Main  /></section>
       <section class="flex min-h-screen w-full"><Profile  /></section>
       <section class="flex min-h-screen w-full"><Skile  /></section>
       <section ref="carreers" class="flex min-h-screen w-full"><Career  /></section>
       <section class="flex min-h-screen w-full"><Project  /></section>
       <ScrollToTop :active="topActive" />
-      <!-- <Footer /> -->
     </div>
   </div>
 </template>
