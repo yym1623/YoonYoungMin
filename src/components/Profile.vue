@@ -18,8 +18,8 @@ type Paragraph = {
 
 const contactButtons = [
   {
-    label: 'yym16233@gmail.com',
-    href: 'mailto:yym16233@gmail.com'
+    label: 'yym1623@naver.com',
+    href: 'mailto:yym1623@naver.com'
   },
   {
     label: 'GITHUB',

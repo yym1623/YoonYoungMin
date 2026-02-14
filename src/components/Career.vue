@@ -4,26 +4,30 @@ type CareerItem = {
   period: string
   position: string
   grade: string
+  department: string
 }
 
 const careerItems: CareerItem[] = [
   {
     company: '피어라인',
     period: '2024.09 ~ 2025.11',
-    position: '프론트엔드 개발',
-    grade: '대리'
+    position: 'FE 개발',
+    grade: '대리',
+    department: '플랫폼 개발팀/FE 개발팀'
   },
   {
     company: '레몬아이티',
     period: '2023.08 ~ 2024.08',
-    position: '프론트엔드 개발',
-    grade: '주임'
+    position: 'FE 개발',
+    grade: '주임',
+    department: '플랫폼 개발팀/FE 개발팀'
   },
   {
     company: '일렉트리',
     period: '2021.10 ~ 2023.01',
     position: 'SW 개발',
-    grade: '연구원'
+    grade: '연구원',
+    department: '기업부설연구소'
   }
 ]
 </script>
@@ -71,7 +75,7 @@ const careerItems: CareerItem[] = [
               </div>
               <div class="rounded-2xl border border-[#f3f4f6] bg-[#f9fafb] px-4 py-2 text-sm text-[#4b5563]">
                 <p class="font-semibold tracking-wide text-[#c84b31]">부서</p>
-                <p class="text-base font-bold text-[#0f172a]">개발부서</p>
+                <p class="text-base font-bold text-[#0f172a]">{{ career.department }}</p>
               </div>
             </div>
           </article>

@@ -43,7 +43,8 @@ const projectCards: ProjectCard[] = [
     highlights: [
       '컴포넌트 구조화 및 재사용성 고려하여 UI/UX 설계',
       '반응형 UI 구성으로 데스크톱/모바일 동시 대응',
-      '유틸 및 모듈화에 중점으로 재사용성 확장'
+      '유틸 및 모듈화에 중점으로 재사용성 확장',
+      'Nuxt 기반 Supabase(PostgreSQL) 연동을 통한 인증 및 데이터 CRUD 기능 구현'
     ],
     links: [
       { label: 'Demo', href: 'https://my-comps.vercel.app/', variant: 'primary' },
@@ -56,11 +57,12 @@ const projectCards: ProjectCard[] = [
     period: '2022.10 ~ 2022.11',
     team: '1명',
     description: '최신/인기 영화를 검색하고 즐겨찾기까지 할 수 있는 영화 검색 서비스',
-    tags: ['Vue', 'Typescript', 'Pinia', 'Vite'],
+    tags: ['Vue', 'Nuxt','Typescript', 'TailwindCSS', 'Pinia', 'Vite'],
     highlights: [
-      '외부 영화 검색 엔진 연동으로 실시간 데이터/평점 저장 제공',
-      '반응형 UI 구성으로 데스크톱/모바일 동시 대응',
-      '로컬 스토리지를 활용해 즐겨찾기 데이터 및 개인 데이터 저장'
+      '외부 영화 API 연동 및 비동기 데이터 흐름 설계, 로딩/에러 상태 분리 처리',
+      '컴포넌트 단위 분리 및 재사용 구조 설계로 유지보수성 향상',
+      '반응형 레이아웃 설계 및 UX를 고려한 인터랙션 구현',
+      '로컬 스토리지를 활용한 사용자 데이터 영속화 및 상태 복원 처리'
     ],
     links: [
       { label: 'Demo', href: 'https://spmv.netlify.app/#/', variant: 'primary' },
@@ -73,12 +75,12 @@ const projectCards: ProjectCard[] = [
     period: '2022.12 ~ 2023.01',
     team: '1명',
     description: '실시간 메시지와 게시물 피드를 포함한 인스타그램 클론 프로젝트입니다.',
-    tags: ['Vue', 'Typescript', 'Pinia', 'Vite', 'Express'],
+    tags: ['Vue', 'Nuxt', 'Typescript', 'TailwindCSS', 'Pinia', 'Vite', 'Nest'],
     highlights: [
       '컴포넌트 구조화 및 재사용성 고려하여 UI/UX 설계',
       'socket.io 기반 실시간 메시지 기능',
-      'Express Session으로 로그인 상태 관리',
-      'Express + MySQL 연동으로 게시물/댓글 CRUD 구축'
+      'NestJS 기반 세션/토큰 인증 구조 설계 및 로그인 상태 관리 구현',
+      'NestJS + Supabase(PostgreSQL) 연동을 통한 CRUD API 설계 및 데이터 계층 분리'
     ],
     links: [
       { label: 'Demo', href: 'https://y-instagram.netlify.app/#/login', variant: 'primary' },

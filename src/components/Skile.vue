@@ -7,15 +7,16 @@ type SkillHighlight = {
 }
 
 const skillTags = [
-  'Vue3',
-  'Nuxt.js',
+  'Vue',
+  'Nuxt',
   'React',
+  'Next',
   'TypeScript',
-  'JavaScript',
+  'SASS',
   'Tailwind CSS',
   'Vite',
   'Node.js',
-  'Express'
+  'Storybook'
 ]
 
 const skillHighlights: SkillHighlight[] = [
@@ -24,14 +25,20 @@ const skillHighlights: SkillHighlight[] = [
     summary: '실무에 맞춘 컴포넌트 설계와 상태 관리, 라우팅 전략을 설계.',
     bullets: [
       'Vue2 Option API와 Vue3 Composition API 모두 구현 경험',
-      'Pinia · Vuex로 페이지 규모에 맞는 상태 관리 패턴 설계'
+      'Nuxt4 기반 SSR/CSR 하이브리드 환경에서 서비스 아키텍처 설계',
+      'Pinia · Vuex로 페이지 규모에 맞는 상태 관리 패턴 설계',
+
     ],
     accent: 'from-[#00adb5] to-[#38bdf8]'
   },
   {
     title: 'React Study',
     summary: 'React 18과 최신 생태계를 학습하며 UI 설계 역량을 확장.',
-    bullets: ['기초 훅과 컴포넌트 패턴 학습 중', 'Next.js · Zustand 등 도입을 목표로 실습'],
+    bullets: [
+      '기초 훅과 컴포넌트 패턴 학습 중',
+      '렌더링 사이클과 Re-render 최적화 전략 학습',
+      'Next.js · Zustand 등 도입을 목표로 실습'
+    ],
     accent: 'from-[#a78bfa] to-[#6366f1]'
   },
   {
@@ -39,6 +46,7 @@ const skillHighlights: SkillHighlight[] = [
     summary: '시맨틱 마크업과 애니메이션 경험을 기반으로 다양한 인터랙션을 구현.',
     bullets: [
       '웹 표준 · 접근성 원칙을 지키며 구조화',
+      '시맨틱 마크업을 활용한 구조적 HTML 설계',
       'SCSS와 Tailwind를 활용한 반응형 스타일링',
       'Keyframe 애니메이션과 마이크로 인터랙션 구현'
     ],
@@ -46,24 +54,35 @@ const skillHighlights: SkillHighlight[] = [
   },
   {
     title: 'JavaScript',
-    summary: 'ES6+와 번들러/테스트 환경을 활용해 안정적인 프론트엔드 환경 구축.',
+    summary: 'ES6+ 환경을 활용해 안정적인 프론트엔드 환경 구축.',
     bullets: [
-      'Webpack · Parcel · Vite를 활용한 빌드 구성 경험',
-      'Jest로 핵심 로직 단위 테스트 작성',
-      'Babel · TypeScript 기반 모던 문법에 익숙'
+      '클로저 · 스코프 · 프로토타입 체인 이해 기반 코드 작성',
+      '함수형 프로그래밍 패턴을 활용한 상태 불변성 유지',
+      'Jest를 활용해 비즈니스 로직 단위 테스트 및 예외 케이스 검증',
+      'TypeScript 기반 타입 설계를 통해 코드 안정성과 유지보수성 강화'
     ],
     accent: 'from-[#fbbf24] to-[#f97316]'
   },
   {
     title: 'Build & DevOps',
     summary: '빌드 속도 최적화 및 서비스 성장 단계에 맞춘 환경 구성.',
-    bullets: ['Vite · Webpack 구성 최적화', 'Docker 기반 로컬/배포 환경화', 'CI/CD(GitHub Actions) 파이프라인 설계', 'AWS S3 · CloudFront 배포 운영'],
+    bullets: [
+      'Vite · Webpack 구성 최적화', 
+      'Docker 기반 로컬/배포 환경화', 
+      'CI/CD(GitHub Actions) 파이프라인 설계', 
+      'AWS S3 · CloudFront 배포 운영'
+    ],
     accent: 'from-[#38bdf8] to-[#0ea5e9]'
   },
   {
     title: 'Collaboration Tools',
     summary: '협업 도구를 활용해 디자인, 기획, 개발 간 커뮤니케이션을 명확하게 유지',
-    bullets: ['Jira · Notion 중심의 업무 정리', 'Figma 프로토타입 피드백', 'Slack 실시간 커뮤니케이션', 'Postman · Swagger 기반 API 협업'],
+    bullets: [
+      'Jira · Notion · Slack · Teams 중심의 업무 정리', 
+      'Figma 프로토타입 피드백',
+      'Postman · Swagger 기반 API 협업',
+      'Git · GitHub 협업 환경 구축 및 운영'
+    ],
     accent: 'from-[#94a3b8] to-[#475569]'
   }
 ]
