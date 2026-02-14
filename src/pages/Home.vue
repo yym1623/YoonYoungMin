@@ -12,7 +12,9 @@ import { registerScrollWatcher, unregisterScrollWatcher } from '@/utils/useScrol
 
 const main = ref<HTMLElement | null>(null)
 const carreers = ref<HTMLElement | null>(null)
+const projects = ref<HTMLElement | null>(null)
 const carreerActive = ref(false)
+const projectActive = ref(false)
 const topActive = ref(false)
 
 onMounted(() => {
@@ -29,7 +31,7 @@ onMounted(() => {
     ]
   })
 
-  // Career 섹션 기준 배경색 변경
+  // Career 섹션 기준 배경색 변경 (어두운 → 흰색)
   registerScrollWatcher({
     elementRef: carreers,
     thresholds: [
@@ -41,11 +43,25 @@ onMounted(() => {
       }
     ]
   })
+
+  // Project 섹션 기준 배경색 변경 (흰색 → 어두운)
+  registerScrollWatcher({
+    elementRef: projects,
+    thresholds: [
+      {
+        threshold: -200,
+        callback: (isActive) => {
+          projectActive.value = isActive
+        }
+      }
+    ]
+  })
 })
 
 onBeforeUnmount(() => {
   unregisterScrollWatcher(main)
   unregisterScrollWatcher(carreers)
+  unregisterScrollWatcher(projects)
 })
 </script>
 
@@ -53,7 +69,7 @@ onBeforeUnmount(() => {
   <div class="relative">
     <div
       class="fixed inset-0 -z-10 transition-colors duration-500"
-      :class="carreerActive ? 'bg-white' : 'bg-[#222831]'"
+      :class="projectActive ? 'bg-black' : carreerActive ? 'bg-white' : 'bg-[#222831]'"
     >
       <Stars />
     </div>
@@ -63,7 +79,7 @@ onBeforeUnmount(() => {
       <section class="flex min-h-screen w-full"><Profile  /></section>
       <section class="flex min-h-screen w-full"><Skile  /></section>
       <section ref="carreers" class="flex min-h-screen w-full"><Career  /></section>
-      <section class="flex min-h-screen w-full"><Project  /></section>
+      <section ref="projects" class="flex min-h-screen w-full"><Project :active="projectActive" /></section>
       <ScrollToTop :active="topActive" />
     </div>
   </div>
