@@ -1,10 +1,5 @@
 <script setup lang="ts">
-type SkillHighlight = {
-  title: string
-  summary: string
-  bullets: string[]
-  accent: string
-}
+import type { SkillHighlight } from '@/types/skile'
 
 const skillTags = [
   'Vue',

@@ -5,11 +5,6 @@ interface ScrollThreshold {
   callback: (isActive: boolean) => void
 }
 
-interface UseScrollOptions {
-  threshold?: number
-  onScroll?: (isActive: boolean) => void
-}
-
 interface ScrollWatcher {
   elementRef: Ref<HTMLElement | null>
   thresholds: ScrollThreshold[]
@@ -110,52 +105,8 @@ export const useScrollProgress = (options: ScrollProgressOptions) => {
 }
 
 /**
- * 여러 스크롤 임계값을 관리하는 composable (전역 스크롤 이벤트 사용)
- * @param elementRef 스크롤 위치를 확인할 요소의 ref
- * @param thresholds 임계값과 콜백 함수 배열
- */
-export const useScrollThreshold = (
-  elementRef: Ref<HTMLElement | null>,
-  thresholds: ScrollThreshold[]
-) => {
-  onMounted(() => {
-    registerScrollWatcher({ elementRef, thresholds })
-  })
-
-  onBeforeUnmount(() => {
-    unregisterScrollWatcher(elementRef)
-  })
-}
-
-/**
  * 페이지 상단으로 부드럽게 스크롤하는 함수
  */
 export const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
-/**
- * 단일 스크롤 임계값을 관리하는 composable
- * @param elementRef 스크롤 위치를 확인할 요소의 ref
- * @param options 임계값 옵션
- * @returns isActive ref
- */
-export const useScroll = (
-  elementRef: Ref<HTMLElement | null>,
-  options: UseScrollOptions = {}
-): { isActive: Ref<boolean> } => {
-  const { threshold = -300, onScroll } = options
-  const isActive = ref(false)
-
-  useScrollThreshold(elementRef, [
-    {
-      threshold,
-      callback: (active) => {
-        isActive.value = active
-        onScroll?.(active)
-      }
-    }
-  ])
-
-  return { isActive }
 }

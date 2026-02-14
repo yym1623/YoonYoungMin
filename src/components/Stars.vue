@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div class="stars"></div>
   <div class="stars2"></div>

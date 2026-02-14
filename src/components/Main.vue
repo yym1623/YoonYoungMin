@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useScrollProgress } from '@/utils/useScroll'
 
 const header = ref<HTMLElement | null>(null)
@@ -48,10 +48,6 @@ onMounted(() => {
   if (Main__Container.value) {
     Main__Container.value.style.overflowX = 'hidden'
   }
-})
-
-onBeforeUnmount(() => {
-  // useScrollProgress에서 이미 이벤트 리스너를 정리함
 })
 
 </script>

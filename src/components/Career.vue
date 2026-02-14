@@ -1,11 +1,5 @@
 <script setup lang="ts">
-type CareerItem = {
-  company: string
-  period: string
-  position: string
-  grade: string
-  department: string
-}
+import type { CareerItem } from '@/types/career'
 
 const careerItems: CareerItem[] = [
   {

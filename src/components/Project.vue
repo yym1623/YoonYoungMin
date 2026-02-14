@@ -1,20 +1,6 @@
 <script setup lang="ts">
-type ProjectLink = {
-  label: string
-  href: string
-  variant: 'primary' | 'secondary'
-}
-
-type ProjectCard = {
-  title: string
-  period: string
-  team: string
-  description: string
-  tags: string[]
-  highlights: string[]
-  links: ProjectLink[]
-  accent: string
-}
+import { openLink } from '@/utils/openLink'
+import type { ProjectCard } from '@/types/project'
 
 const projectCards: ProjectCard[] = [
   {
@@ -94,10 +80,6 @@ const projectCards: ProjectCard[] = [
 const props = defineProps<{
   active?: boolean
 }>()
-
-const openLink = (href: string) => {
-  window.open(href, '_blank')
-}
 </script>
 
 <template>

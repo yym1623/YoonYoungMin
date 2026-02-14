@@ -1,20 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { openLink } from '@/utils/openLink'
+import type { Paragraph } from '@/types/profile'
 
 const myimg = ref(false)
-
-const openLink = (href: string) => {
-  window.open(href, '_blank')
-}
-
-type ParagraphPart = {
-  text: string
-  highlight?: boolean
-}
-
-type Paragraph = {
-  parts: ParagraphPart[]
-}
 
 const contactButtons = [
   {
