@@ -1,0 +1,52 @@
+import type { SkillHighlight } from '@/types/skill'
+
+const skillTags = ['Vue', 'Nuxt', 'React', 'Next', 'TypeScript', 'SASS', 'Tailwind CSS', 'Vite', 'Node.js', 'Storybook']
+
+const skillHighlights: SkillHighlight[] = [
+  { title: 'Vue · Nuxt Ecosystem', summary: '실무에 맞춘 컴포넌트 설계와 상태 관리, 라우팅 전략을 설계.', bullets: ['Vue2 Option API와 Vue3 Composition API 모두 구현 경험', 'Nuxt4 기반 SSR/CSR 하이브리드 환경에서 서비스 아키텍처 설계', 'Pinia · Vuex로 페이지 규모에 맞는 상태 관리 패턴 설계'], accent: 'from-[#00adb5] to-[#38bdf8]' },
+  { title: 'React Study', summary: 'React 18과 최신 생태계를 학습하며 UI 설계 역량을 확장.', bullets: ['기초 훅과 컴포넌트 패턴 학습 중', '렌더링 사이클과 Re-render 최적화 전략 학습', 'Next.js · Zustand 등 도입을 목표로 실습'], accent: 'from-[#a78bfa] to-[#6366f1]' },
+  { title: 'HTML · CSS', summary: '시맨틱 마크업과 애니메이션 경험을 기반으로 다양한 인터랙션을 구현.', bullets: ['웹 표준 · 접근성 원칙을 지키며 구조화', '시맨틱 마크업을 활용한 구조적 HTML 설계', 'SCSS와 Tailwind를 활용한 반응형 스타일링', 'Keyframe 애니메이션과 마이크로 인터랙션 구현'], accent: 'from-[#f472b6] to-[#fb7185]' },
+  { title: 'JavaScript', summary: 'ES6+ 환경을 활용해 안정적인 프론트엔드 환경 구축.', bullets: ['클로저 · 스코프 · 프로토타입 체인 이해 기반 코드 작성', '함수형 프로그래밍 패턴을 활용한 상태 불변성 유지', 'Jest를 활용해 비즈니스 로직 단위 테스트 및 예외 케이스 검증', 'TypeScript 기반 타입 설계를 통해 코드 안정성과 유지보수성 강화'], accent: 'from-[#fbbf24] to-[#f97316]' },
+  { title: 'Build & DevOps', summary: '빌드 속도 최적화 및 서비스 성장 단계에 맞춘 환경 구성.', bullets: ['Vite · Webpack 구성 최적화', 'Docker 기반 로컬/배포 환경화', 'CI/CD(GitHub Actions) 파이프라인 설계', 'AWS S3 · CloudFront 배포 운영'], accent: 'from-[#38bdf8] to-[#0ea5e9]' },
+  { title: 'Collaboration Tools', summary: '협업 도구를 활용해 디자인, 기획, 개발 간 커뮤니케이션을 명확하게 유지', bullets: ['Jira · Notion · Slack · Teams 중심의 업무 정리', 'Figma 프로토타입 피드백', 'Postman · Swagger 기반 API 협업', 'Git · GitHub 협업 환경 구축 및 운영'], accent: 'from-[#94a3b8] to-[#475569]' }
+]
+
+export default function Skile() {
+  return (
+    <section className="w-full py-24 font-montserrat text-white">
+      <div className="mx-auto max-w-6xl px-4 md:px-10">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.5em] text-[#38bdf8]">Skills</p>
+          <h2 className="mt-4 text-4xl font-extrabold text-white sm:text-5xl">Tech Stack & Focus</h2>
+          <p className="mt-4 text-base text-slate-300">프레임워크 중심의 UI 개발부터 빌드/테스트 자동화까지, 서비스 품질을 높이는 기술을 꾸준히 다듬고 있습니다.</p>
+        </div>
+        <div className="mt-10 flex flex-wrap justify-center gap-3 text-sm font-semibold">
+          {skillTags.map((tag) => (
+            <span key={tag} className="rounded-full border border-white/20 px-4 py-2 text-slate-200 transition hover:border-[#00adb5] hover:text-white">{tag}</span>
+          ))}
+        </div>
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
+          {skillHighlights.map((highlight) => (
+            <article key={highlight.title} className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_30px_70px_rgba(8,12,33,0.4)] transition hover:-translate-y-1 hover:border-[#00adb5]">
+              <div className="flex items-center gap-4">
+                <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${highlight.accent}`}></div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">{highlight.title}</h3>
+                  <p className="mt-1 text-sm text-slate-200">{highlight.summary}</p>
+                </div>
+              </div>
+              <ul className="mt-6 space-y-3 text-sm text-slate-100">
+                {highlight.bullets.map((bullet, idx) => (
+                  <li key={`${highlight.title}-${idx}`} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-[#00adb5]"></span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

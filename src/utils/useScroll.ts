@@ -1,4 +1,4 @@
-import { ref, onMounted, onBeforeUnmount, type Ref } from 'vue'
+import { useEffect, useRef, useState, type RefObject } from 'react'
 
 interface ScrollThreshold {
   threshold: number
@@ -6,20 +6,18 @@ interface ScrollThreshold {
 }
 
 interface ScrollWatcher {
-  elementRef: Ref<HTMLElement | null>
+  elementRef: RefObject<HTMLElement | null>
   thresholds: ScrollThreshold[]
 }
 
-// 전역 스크롤 이벤트 관리
 let watchers: ScrollWatcher[] = []
 let isListening = false
 
 const handleScroll = () => {
   watchers.forEach(({ elementRef, thresholds }) => {
-    if (!elementRef.value) return
-
+    if (!elementRef.current) return
     thresholds.forEach(({ threshold, callback }) => {
-      const isActive = window.scrollY > elementRef.value!.offsetTop + threshold
+      const isActive = window.scrollY > elementRef.current!.offsetTop + threshold
       callback(isActive)
     })
   })
@@ -27,86 +25,66 @@ const handleScroll = () => {
 
 export const registerScrollWatcher = (watcher: ScrollWatcher) => {
   watchers.push(watcher)
-  
   if (!isListening) {
     isListening = true
-    document.addEventListener('scroll', handleScroll)
-    // 초기 상태 설정
+    window.addEventListener('scroll', handleScroll)
     handleScroll()
   }
 }
 
-export const unregisterScrollWatcher = (elementRef: Ref<HTMLElement | null>) => {
+export const unregisterScrollWatcher = (elementRef: RefObject<HTMLElement | null>) => {
   watchers = watchers.filter(w => w.elementRef !== elementRef)
-  
   if (watchers.length === 0 && isListening) {
     isListening = false
-    document.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('scroll', handleScroll)
   }
 }
 
 interface ScrollProgressOptions {
-  startElement: Ref<HTMLElement | null>
-  endElement?: Ref<HTMLElement | null>
+  startElement: RefObject<HTMLElement | null>
+  endElement?: RefObject<HTMLElement | null>
   onProgress?: (progress: number) => void
 }
 
-/**
- * 스크롤 진행도를 계산하는 함수
- * @param options 시작 요소, 종료 요소, 진행도 콜백
- * @returns 진행도 (0~1)
- */
 export const useScrollProgress = (options: ScrollProgressOptions) => {
-  const { startElement, endElement, onProgress } = options
-  const progress = ref(0)
+  const { startElement, endElement } = options
+  const onProgressRef = useRef(options.onProgress)
+  onProgressRef.current = options.onProgress
+  const [progress, setProgress] = useState(0)
 
-  const calculateProgress = () => {
-    if (!startElement.value) return
-
-    const startTop = startElement.value.offsetTop
-    const startHeight = startElement.value.offsetHeight
-    const scrollY = window.scrollY
-    const windowHeight = window.innerHeight
-
-    let endTop: number
-    if (endElement?.value) {
-      endTop = endElement.value.offsetTop
-    } else {
-      // 다음 섹션까지의 거리를 대략적으로 계산 (Main 섹션 높이 + 화면 높이)
-      endTop = startTop + startHeight + windowHeight
+  useEffect(() => {
+    const calculateProgress = () => {
+      if (!startElement.current) return
+      const startTop = startElement.current.offsetTop
+      const startHeight = startElement.current.offsetHeight
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      let endTop: number
+      if (endElement?.current) {
+        endTop = endElement.current.offsetTop
+      } else {
+        endTop = startTop + startHeight + windowHeight
+      }
+      const startPoint = startTop + startHeight / 2 - windowHeight / 2
+      if (scrollY >= startPoint) {
+        const scrollRange = endTop - startPoint
+        const scrolled = scrollY - startPoint
+        const calculatedProgress = Math.min(Math.max(scrolled / scrollRange, 0), 1)
+        setProgress(calculatedProgress)
+        onProgressRef.current?.(calculatedProgress)
+      } else {
+        setProgress(0)
+        onProgressRef.current?.(0)
+      }
     }
-
-    // Main 섹션의 중간 지점부터 시작 (섹션이 화면 중앙에 올 때)
-    const startPoint = startTop + startHeight / 2 - windowHeight / 2
-    
-    // 스크롤이 시작 지점을 넘어서면 진행도 계산
-    if (scrollY >= startPoint) {
-      const scrollRange = endTop - startPoint
-      const scrolled = scrollY - startPoint
-      const calculatedProgress = Math.min(Math.max(scrolled / scrollRange, 0), 1)
-      progress.value = calculatedProgress
-      onProgress?.(calculatedProgress)
-    } else {
-      progress.value = 0
-      onProgress?.(0)
-    }
-  }
-
-  onMounted(() => {
     calculateProgress()
-    document.addEventListener('scroll', calculateProgress)
-  })
-
-  onBeforeUnmount(() => {
-    document.removeEventListener('scroll', calculateProgress)
-  })
+    window.addEventListener('scroll', calculateProgress)
+    return () => window.removeEventListener('scroll', calculateProgress)
+  }, [startElement, endElement])
 
   return { progress }
 }
 
-/**
- * 페이지 상단으로 부드럽게 스크롤하는 함수
- */
 export const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
