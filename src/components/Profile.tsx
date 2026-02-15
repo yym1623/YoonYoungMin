@@ -7,7 +7,7 @@ import myimgSrc from '@/assets/myimg.png'
 const contactButtons = [
   { label: 'yym1623@naver.com', href: 'mailto:yym1623@naver.com' },
   { label: 'GITHUB', href: 'https://github.com/yym1623' },
-  { label: 'BLOG', href: 'https://young-min.netlify.app/' },
+  { label: 'BLOG', href: 'https://youngmin-blog.vercel.app' },
   { label: 'RESUME', href: 'https://www.figma.com/file/03Le7GFj5cEVf3UOxmQcRE/%EC%9C%A4%EC%98%81%EB%AF%BC-%EC%9D%B4%EB%A0%A5%EC%84%9C?type=design&node-id=0%3A1&mode=design&t=0t8WvqDlul2v9ILp-1' }
 ]
 
